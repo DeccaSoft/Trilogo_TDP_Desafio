@@ -1,0 +1,88 @@
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\Aula6.exe
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\Aula6.deps.json
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\Aula6.runtimeconfig.json
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\Aula6.runtimeconfig.dev.json
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\Aula6.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\Aula6.pdb
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\obj\Debug\netcoreapp3.1\Aula6.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\obj\Debug\netcoreapp3.1\Aula6.AssemblyInfoInputs.cache
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\obj\Debug\netcoreapp3.1\Aula6.AssemblyInfo.cs
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\obj\Debug\netcoreapp3.1\Aula6.csproj.CoreCompileInputs.cache
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\obj\Debug\netcoreapp3.1\Aula6.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\obj\Debug\netcoreapp3.1\staticwebassets\Aula6.StaticWebAssets.Manifest.cache
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\obj\Debug\netcoreapp3.1\staticwebassets\Aula6.StaticWebAssets.xml
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\obj\Debug\netcoreapp3.1\scopedcss\bundle\Aula6.styles.css
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\obj\Debug\netcoreapp3.1\Aula6.RazorTargetAssemblyInfo.cache
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\obj\Debug\netcoreapp3.1\Aula6.csproj.CopyComplete
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\obj\Debug\netcoreapp3.1\Aula6.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\obj\Debug\netcoreapp3.1\Aula6.pdb
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\obj\Debug\netcoreapp3.1\Aula6.genruntimeconfig.cache
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\obj\Debug\netcoreapp3.1\Aula6.csproj.AssemblyReference.cache
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\MySqlConnector.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula06\MinhaAula6\Treinando\bin\Debug\netcoreapp3.1\Pomelo.JsonObject.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\Aula6.exe
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\Aula6.deps.json
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\Aula6.runtimeconfig.json
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\Aula6.runtimeconfig.dev.json
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\Aula6.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\Aula6.pdb
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\MySqlConnector.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\Pomelo.JsonObject.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\obj\Debug\netcoreapp3.1\Aula6.csproj.AssemblyReference.cache
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\obj\Debug\netcoreapp3.1\Aula6.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\obj\Debug\netcoreapp3.1\Aula6.AssemblyInfoInputs.cache
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\obj\Debug\netcoreapp3.1\Aula6.AssemblyInfo.cs
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\obj\Debug\netcoreapp3.1\Aula6.csproj.CoreCompileInputs.cache
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\obj\Debug\netcoreapp3.1\Aula6.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\obj\Debug\netcoreapp3.1\staticwebassets\Aula6.StaticWebAssets.Manifest.cache
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\obj\Debug\netcoreapp3.1\staticwebassets\Aula6.StaticWebAssets.xml
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\obj\Debug\netcoreapp3.1\scopedcss\bundle\Aula6.styles.css
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\obj\Debug\netcoreapp3.1\Aula6.RazorTargetAssemblyInfo.cache
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\obj\Debug\netcoreapp3.1\Aula6.csproj.CopyComplete
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\obj\Debug\netcoreapp3.1\Aula6.dll
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\obj\Debug\netcoreapp3.1\Aula6.pdb
+C:\Users\andre\WorkSpaces\Trílogo\C#\Aula07\Minha Aula07\Treinando\obj\Debug\netcoreapp3.1\Aula6.genruntimeconfig.cache
