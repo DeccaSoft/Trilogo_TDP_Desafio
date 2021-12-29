@@ -43,7 +43,7 @@ namespace Treinando.Controllers
 
         
         [HttpGet("order/{id}")]
-        public IActionResult ListItemsByOrderId(int id)         //Lista os items de um pedido (pega o pedido pelo id)
+        public IActionResult ListItemsByOrderId(int id)         //Lista os items de um pedido (pega pelo id do pedido)
         {
             var order = _orderServices.getOrder(id);
 

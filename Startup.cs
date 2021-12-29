@@ -15,11 +15,13 @@ using Treinando.Data;
 using Treinando.Controllers;
 using Treinando.Models;
 using System.Text;
-using System.Text.Json;
+//using System.Text.Json;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Aula6.Services;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 
 namespace Treinando
 {
@@ -73,10 +75,12 @@ namespace Treinando
             });
 
             services.AddControllers();
-            //.AddNewtonsoftJson(o => {o.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;}); => Utilizado até a verão 3.1
-            //.AddNewtonsoftJson(o => {o.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;}); => Não Retorna os Nulos
-            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "Aula6", Version = "v1"}); });
+            //.AddNewtonsoftJson(o => {o.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;});    //Utilizado até a verão 3.1
+            services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            services.AddControllers().AddNewtonsoftJson(o => {o.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;});     //Não Retorna os Nulos
 
+
+            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "Aula6", Version = "v1"}); });
             // Cilcos de Vida
             //services.AddScoped<>();    => Um objeto por Requisição (request / response)
             //services.AddSingleton<>(); => Um único objeto por aplicação
