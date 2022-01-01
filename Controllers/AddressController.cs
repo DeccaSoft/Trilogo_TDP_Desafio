@@ -25,48 +25,67 @@ namespace Aula6.Controllers
         }
 
         [HttpGet]
-        public List<Address> GetAddresses()        //Lista Todos os Endereços
+        public IActionResult GetAddresses()        //Lista Todos os Endereços
         {
-            return _addressServices.ListAddress();
+            if(_addressServices.ListAddress().Count == 0)
+            {
+                return Ok("Nenhum Endereço Encontrado !!!");
+            }
+            return Ok(_addressServices.ListAddress());
         }
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)    //Retorna Endereço pelo Id
         {
+            if (_addressServices.GetAddressById(id) is null)
+            {
+                return Ok("Endereço NÃO encontrado!");
+            }
             return Ok(_addressServices.GetAddressById(id));
         }
 
         [HttpGet("street/{street}")]
         public IActionResult GetByStreet(string street)    //Retorna Endereços pelo Nome da Rua
         {
+            if(_addressServices.GetAddressByStreet(street).Count == 0)
+            {
+                return Ok("Nenhum Endereço cadastrado nessa Rua !");
+            }
             return Ok(_addressServices.GetAddressByStreet(street));
         }
 
         [HttpGet("neighborhood/{neighborhood}")]
         public IActionResult GetByNeighborhood(string neighborhood)    //Retorna Endereços pelo Bairro
         {
+            if (_addressServices.GetAddressByNeighborhood(neighborhood).Count == 0)
+            {
+                return Ok("Nenhum Endereço cadastrado nesse Bairro !");
+            }
             return Ok(_addressServices.GetAddressByNeighborhood(neighborhood));
         }
 
         [HttpPost]
-        public Address Create([FromBody] Address address)
+        public IActionResult Create([FromBody] Address address)
         {
-            return _addressServices.CreateAddress(address);
-        }
+            if (_addressServices.CreateAddress(address))
+            {
+                return Ok(address);
+            }
+            return Ok("Endereço Já Cadastrado !");
 
+        }
+                
         [HttpPut]
         public IActionResult Update([FromBody] Address address)
         {
-            if (address == null)
+            if (_addressServices.GetAddressById(address.Id) is null)
             {
                 return BadRequest("Endereço NÃO encontrado");
             }
-            else
-            {
-                return Ok(_addressServices.UpdateAddress(address));
-            }
+            return Ok(_addressServices.UpdateAddress(address));
+            
         }
-
+        
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
@@ -84,9 +103,15 @@ namespace Aula6.Controllers
         [HttpGet("search")]
         //Lista endereços que contenham o 'term' em sua Rua, Número, Bairro, Cidade ou Estado... Paginando a partir do endereço 'offset', listando de 'limit' em 'limit' endereços
 
-        public List<Address> Search([FromQuery] string term, int offset, int limit)
+        public IActionResult Search([FromQuery] string searchTerm, int initialRecord = 0, int limitPerPage = 10)
         {
-            return _addressServices.SearchAddress(term, offset, limit);
+            {
+                if (_addressServices.SearchAddress(searchTerm, initialRecord, limitPerPage).Count == 0)
+                {
+                    return Ok("Nenhum Endereço Encontrado para essa Pesquisa!");
+                }
+                return Ok(_addressServices.SearchAddress(searchTerm, initialRecord, limitPerPage));
+            }
         }
     }
 }

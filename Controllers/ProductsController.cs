@@ -26,40 +26,53 @@ namespace Aula6.Controllers
         }
 
         [HttpGet]
-        public List<Product> GetProducts()        //Lista Todos os Produtos
+        public IActionResult GetProducts()        //Lista Todos os Produtos
         {
-            return _productServices.ListProducts();
+            if(_productServices.ListProducts().Count == 0)
+            {
+                return Ok("Nenhum Produto Cadastro !");
+            }
+            return Ok(_productServices.ListProducts());
         }
 
         [HttpGet("id/{id}")]
         public IActionResult GetById(int id)    //Retorna Produto pelo Id
         {
+            if (_productServices.GetProductById(id) is null)
+            {
+                return Ok("Produto NÃO encontrado!");
+            }
             return Ok(_productServices.GetProductById(id));
         }
 
         [HttpGet("name/{name}")]
         public IActionResult GetByName(string name)    //Retorna Produto pelo Nome
         {
+            if (_productServices.GetProductByName(name).Count == 0)
+            {
+                return Ok("Nenhum Produto Encontrado com este Nome!");
+            }
             return Ok(_productServices.GetProductByName(name));
         }
 
         [HttpPost]
-        public Product Create([FromBody] Product product)   
+        public IActionResult Create([FromBody] Product product)   
         {
-            return _productServices.CreateProduct(product);
+            if (_productServices.CreateProduct(product))
+            {
+                return Ok(product);
+            }
+            return Ok("Produto JÁ Cadastrado !");
         }
 
         [HttpPut]
         public IActionResult Update([FromBody] Product product)   
         {
-            if (product == null)
+            if(_productServices.GetProductById(product.Id) is null)
             {
-                return BadRequest("Produto NÃO encontrado");
+                return BadRequest("Produto NÃO Cadastrado");
             }
-            else
-            {
-                return Ok(_productServices.UpdateProduct(product));
-            }
+            return Ok(_productServices.UpdateProduct(product));
         }
 
         [HttpDelete("{id}")]
@@ -79,32 +92,48 @@ namespace Aula6.Controllers
         [HttpGet("search")]
         //Lista produtos que contenham o 'term' em seu Nome,ou Descrição... Paginando a partir do produto 'offset', listando de 'limit' em 'limit' produtos
 
-        public List<Product> Search([FromQuery] string term, int offset, int limit)   
+        public IActionResult Search([FromQuery] string searchTerm, int initialRecord = 0, int limitPerPage = 10)   
         {
-            return _productServices.SearchProducts(term, offset, limit);
+            if(_productServices.SearchProducts(searchTerm, initialRecord, limitPerPage).Count == 0)
+            {
+                return Ok("Nenhum Produto Encontrado para essa Pesquisa!");
+            }
+            return Ok(_productServices.SearchProducts(searchTerm, initialRecord, limitPerPage));
         }
 
         //PLUS
 
         //Lista Quantidade de um produto em estoque
         [HttpGet("inventory/{id}")]
-        public int GetInventory(int id)    //Retorna Estoque do Produto pelo Id
+        public IActionResult GetInventory(int id)    //Retorna Estoque do Produto pelo Id
         {
-            return _productServices.GetProductInventory(id);
+            if(_productServices.GetProductById(id) is null)
+            {
+                return Ok("Produto NÃO Encontrado!");
+            }
+            return Ok("Total em Estoque: " + _productServices.GetProductInventory(id));
         }
 
         //Listar Produtos com estoque abaixo do Mínimo
-        [HttpGet("stock")]
-        public List<Product> ListStocksBelowTheMinimum()        //Lista Todos os Produtos com estoque abaixo do Mínimo
+        [HttpGet("stockBelowMin")]
+        public IActionResult ListStocksBelowTheMinimum()        //Lista Todos os Produtos com estoque abaixo do Mínimo
         {
-            return _productServices.ListProductsWithStockBelowTheMinimum();
+            if(_productServices.ListProductsWithStockBelowTheMinimum().Count == 0)
+            {
+                return Ok("Nenhum Produto com Estoque Abaixo do Mínimo");
+            }
+            return Ok(_productServices.ListProductsWithStockBelowTheMinimum());
         }
 
         //Listar produto por faixa de preço (R$ 0.00 até 'price')
         [HttpGet("price/{price}")] // /products/price/100
-        public List<Product> ListProductsPricedUpToXValue(decimal price)        //Lista Todos os Produtos com preço até o valor x 'price' predeterminado
+        public IActionResult ListProductsPricedUpToXValue(decimal price)        //Lista Todos os Produtos com preço até o valor x 'price' predeterminado
         {
-            return _productServices.ListProductsPricedUpToPrice(price);
+            if (_productServices.ListProductsPricedUpToPrice(price).Count == 0)
+            {
+                return Ok("Nenhum Produto encontrado com Valor Menor ou Igual ao Pesquisado");
+            }
+            return Ok(_productServices.ListProductsPricedUpToPrice(price));
         }
     }
 }

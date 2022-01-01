@@ -35,25 +35,29 @@ namespace Aula6.Services
             return _dbContext.Adresses.Where(n => n.Neighborhood.Contains(neighborhood)).ToList();
         }
 
-        public Address CreateAddress(Address address)
+        public bool CreateAddress(Address address)
         {
-            var addressModel = _dbContext.Adresses.FirstOrDefault(a => a.Id.Equals(address.Id));
-            if (addressModel != null)
+            if (_dbContext.Adresses.FirstOrDefault(a => a.Id.Equals(address.Id)) != null
+                || _dbContext.Adresses.FirstOrDefault(a => a.Street.Equals(address.Street) && a.Neighborhood.Equals(address.Neighborhood) 
+                    && a.Number.Equals(address.Number) && a.City.Equals(address.City) && a.State.Equals(address.State)) != null )
             {
-                return address; // BadRequest("Endereço já Cadastrado !");
+                return false;
             }
             _dbContext.Adresses.Add(address);
             _dbContext.SaveChanges();
-            return address;
+            return true;
         }
 
-        public Address UpdateAddress(Address address)
+        
+        public Address UpdateAddress(Address address)  //Address
         {
-            _dbContext.Adresses.Update(address);
+            var addressModel = _dbContext.Adresses.Find(address.Id);
+            //_dbContext.Products.Update(product);
+            _dbContext.Entry(addressModel).CurrentValues.SetValues(address);
             _dbContext.SaveChanges();
             return address;
         }
-
+        
         public bool DeleteAddress(int id)
         {
             var address = _dbContext.Adresses.Find(id);
@@ -71,9 +75,9 @@ namespace Aula6.Services
         }
 
         //Lista endereços que contenham o 'term' em sua Rua, Número, Bairro, Cidade ou Estado... Paginando a partir do endereço 'offset', listando de 'limit' em 'limit' endereços
-        public List<Address> SearchAddress(string term, int offset, int limit)
+        public List<Address> SearchAddress(string searchTerm, int initialRecord, int limitPerPage)
         {
-            List<Address> adresses = _dbContext.Adresses.Where(a => a.Street.Contains(term) || a.Number.Contains(term) || a.Neighborhood.Contains(term) || a.City.Contains(term) || a.State.Contains(term)).Skip(offset).Take(limit).ToList();
+            List<Address> adresses = _dbContext.Adresses.Where(a => a.Street.Contains(searchTerm) || a.Number.Contains(searchTerm) || a.Neighborhood.Contains(searchTerm) || a.City.Contains(searchTerm) || a.State.Contains(searchTerm)).Skip(initialRecord).Take(limitPerPage).ToList();
             return adresses;
         }
     }

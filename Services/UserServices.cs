@@ -25,35 +25,41 @@ namespace Aula6.Services
 
         public User GetUserById(int id)
         {
-            return _dbContext.Users.Include(u => u.Address).FirstOrDefault(u => u.Id == id);
+            return _dbContext.Users.Include(u => u.Address).Include(u => u.Orders).FirstOrDefault(u => u.Id == id);
         }
 
         public User GetUserByLogin(string login)
         {
-            return _dbContext.Users.Include(u => u.Address).FirstOrDefault(u => u.Login == login);
-        }
-
-        public User GetUserWithOrders(string login)
-        {
             return _dbContext.Users.Include(u => u.Address).Include(u => u.Orders).FirstOrDefault(u => u.Login == login);
         }
 
-        public User CreateUser(User user)
+        public List<Order> GetUserWithOrders(int id)
         {
-            var userModel = _dbContext.Users.FirstOrDefault(u => u.CPF.Equals(user.CPF) || u.Email.Equals(user.Email) || (u.Login.Equals(user.Login)));
-            if (userModel != null)
+
+            //return _dbContext.Users.Include(u => u.Orders).Where(u => u.Login == login).ToList();
+            return _dbContext.Orders.Where(u => u.UserId == id).ToList();
+        }
+
+        public bool CreateUser(User user)
+        {
+            if (_dbContext.Users.FirstOrDefault(u => u.Id.Equals(user.Id)) != null
+                || _dbContext.Users.FirstOrDefault(u => u.Name.Equals(user.Name) && u.Login.Equals(user.Login)
+                    || u.CPF.Equals(user.CPF) || u.Email.Equals(user.Email) && u.Login.Equals(user.Login)) != null)
             {
-                return user; // BadRequest("Usuário já Cadastrado !");
+                return false;
             }
             user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
             _dbContext.Users.Add(user);
             _dbContext.SaveChanges();
-            return user;
+            return true;
         }
 
         public User UpdateUser(User user)
         {
-            _dbContext.Users.Update(user);
+            var userModel = _dbContext.Users.Find(user.Id);
+            //_dbContext.Products.Update(product);
+            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+            _dbContext.Entry(userModel).CurrentValues.SetValues(user);
             _dbContext.SaveChanges();
             return user;
         }
@@ -76,10 +82,25 @@ namespace Aula6.Services
         }
 
         //Lista usuários que contenham o 'term' em seu Nome, Login ou Email... Paginando a partir do usuário 'offset', listando de 'limit' em 'limit' usuários
-        public List<User> SearchUsers([FromQuery] string term, int offset, int limit)
+        public List<User> SearchUsers([FromQuery] string searchTerm, int initialRecord, int limitPerPage)
         {
-            List<User> users = _dbContext.Users.Where(u => u.Name.Contains(term) || u.Login.Contains(term) || u.Email.Contains(term)).Skip(offset).Take(limit).ToList();
+            List<User> users = _dbContext.Users.Where(u => u.Name.Contains(searchTerm) || u.Login.Contains(searchTerm) || u.Email.Contains(searchTerm)).Skip(initialRecord).Take(limitPerPage).ToList();
             return users;
+        }
+
+        public User GetUserByCPF(string cpf)
+        {
+            return _dbContext.Users.Include(u => u.Address).Include(u => u.Orders).FirstOrDefault(u => u.CPF == cpf);
+        }
+
+        public User GetUserByEmail(string email)
+        {
+            return _dbContext.Users.Include(u => u.Address).Include(u => u.Orders).FirstOrDefault(u => u.Email == email);
+        }
+
+        public List<User> GetUsersByBirthday(string birthday)
+        {
+            return _dbContext.Users.Include(u => u.Address).Include(u => u.Orders).Where(u => u.Birthday.ToString().Contains(birthday)).ToList();
         }
     }
 }

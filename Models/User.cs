@@ -27,8 +27,8 @@ namespace Treinando.Models
 
         public DateTime Birthday { get; set; }
 
-        public Address Address { get; set; }
-        public List<Order> Orders { get; set; }
+        public Address? Address { get; set; }
+        public List<Order>? Orders { get; set; }
 
     }
 }

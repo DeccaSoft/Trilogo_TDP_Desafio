@@ -9,9 +9,9 @@ namespace Treinando.Models
     public class OrderSearch
     {
         public int Id{get; set;}
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public List<OrderStatus> Status { get; set; }
+        public DateTime StartDate { get; set; } = DateTime.Now;
+        public DateTime EndDate { get; set; } = DateTime.Now;
+        public List<OrderStatus>? Status { get; set; }
         public List<int> UserIds { get; set; }
     }
 }

@@ -30,21 +30,24 @@ namespace Aula6.Services
             return _dbContext.Products.Where(n => n.Name.Equals(name)).ToList();
         }
 
-        public Product CreateProduct(Product product)
+        public bool CreateProduct(Product product)
         {
-            var productModel = _dbContext.Products.FirstOrDefault(p => p.Id.Equals(product.Id));
-            if (productModel != null)
+            if (_dbContext.Products.FirstOrDefault(p => p.Id.Equals(product.Id)) != null
+                || _dbContext.Products.FirstOrDefault(p => p.Name.Equals(product.Name) && p.Description.Equals(product.Description)
+                    && p.Quantity.Equals(product.Quantity) && p.Price.Equals(product.Price) && p.StockMinimum.Equals(product.StockMinimum)) != null)
             {
-                return product; // BadRequest("Produto já Cadastrado !");
+                return false;
             }
             _dbContext.Products.Add(product);
             _dbContext.SaveChanges();
-            return product;
+            return true;
         }
 
         public Product UpdateProduct(Product product)
         {
-            _dbContext.Products.Update(product);
+            var productModel = _dbContext.Products.Find(product.Id);
+            //_dbContext.Products.Update(product);
+            _dbContext.Entry(productModel).CurrentValues.SetValues(product);
             _dbContext.SaveChanges();
             return product;
         }
@@ -66,9 +69,9 @@ namespace Aula6.Services
         }
 
         //Lista produtos que contenham o 'term' em seu Nome,ou Descrição... Paginando a partir do produto 'offset', listando de 'limit' em 'limit' produtos
-        public List<Product> SearchProducts(string term, int offset, int limit)
+        public List<Product> SearchProducts(string searchTerm, int initialRecord, int limitPerPage)
         {
-            List<Product> products = _dbContext.Products.Where(p => p.Name.Contains(term) || p.Description.Contains(term)).Skip(offset).Take(limit).ToList();
+            List<Product> products = _dbContext.Products.Where(p => p.Name.Contains(searchTerm) || p.Description.Contains(searchTerm)).Skip(initialRecord).Take(limitPerPage).ToList();
             return products;
         }
 

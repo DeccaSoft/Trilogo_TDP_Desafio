@@ -18,6 +18,7 @@ namespace Treinando.Models
         public User User { get; set; }
 
         //[Required]
+        [Column(TypeName = "decimal(10, 2)")]
         public decimal TotalValue { get; set; } = 0;
 
         //[Required]
@@ -25,13 +26,13 @@ namespace Treinando.Models
 
         //[Required]
         public DateTime CreationDate { get; set; } = DateTime.Now;  //Padrão: Data da Criação do Pedido
-        public DateTime? CancelDate { get; set; }
+        public DateTime? CancelDate { get; set; } = null;
 
         //[Required]
         public OrderStatus Status { get; set; } = OrderStatus.Open;
-        public DateTime? FinishedDate { get; set; }
+        public DateTime? FinishedDate { get; set; } = null;
 
-        public Payment Payment { get; set; }
+        public Payment Payment { get; set; } = Payment.Cash;
 
     }
 }

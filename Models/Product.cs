@@ -8,13 +8,14 @@ namespace Treinando.Models
     public class Product
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public int Quantity { get; set;}
+        public string Name { get; set; } = "";
+        public string Description { get; set; } = "";
+        public int Quantity { get; set; } = 0;
 
-        public decimal Price { get; set; }
+        [Column(TypeName = "decimal(10, 2)")]
+        public decimal Price { get; set; } = 0;
 
         //Plus
-        public int StockMinimum { get; set; }
+        public int StockMinimum { get; set; } = 10;
     }
 }

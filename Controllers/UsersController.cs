@@ -24,48 +24,70 @@ namespace Treinando.Controllers
         }
 
         [HttpGet]
-        public List<User> GetUsers()        //Lista Todos os Usuários
+        public IActionResult GetUsers()        //Lista Todos os Usuários
         {
-            return _userServices.GetListUsers();
+            if (_userServices.GetListUsers().Count == 0)
+            {
+                return Ok("Nenhum Usuário Cadastrado!");
+            }
+            return Ok(_userServices.GetListUsers());
         }
         
         [HttpGet("id/{id}")]  
-        public User GetById(int id)    //Retorna Usuário pelo Id
+        public IActionResult GetById(int id)    //Retorna Usuário pelo Id
         {
-            return _userServices.GetUserById(id);
+            if (_userServices.GetUserById(id) is null)
+            {
+                return Ok("Usuário NÃO Cadastrado!");
+            }
+            return Ok(_userServices.GetUserById(id));
         }
 
         [HttpGet("login/{login}")]
         public IActionResult GetByLogin(string login)    //Retorna Usuário pelo Login
         {
+            if (_userServices.GetUserByLogin(login) is null)
+            {
+                return Ok("Usuário NÃO Cadastrado!");
+            }
             return Ok(_userServices.GetUserByLogin(login));
         }
 
         //PLUS
 
-        [HttpGet("{login}/orders")]
-        public IActionResult GetUserOrders(string login)    //Retorna Usuário e Todos seus Pedidos pelo Login
+        [HttpGet("{id}/orders")]
+        public IActionResult GetUserOrders(int id)    //Retorna Usuário e Todos seus Pedidos pelo seu Id
         {
-            return Ok(_userServices.GetUserWithOrders(login));
+            if (_userServices.GetUserById(id) is null)
+            {
+                return Ok("Usuário NÃO Cadastrado!");
+            }
+
+            if (_userServices.GetUserWithOrders(id).Count == 0)
+            {
+                return Ok("Nenhum Pedido encontrado para o Usuário Especificado!");
+            }
+            return Ok(_userServices.GetUserWithOrders(id));
         }
         
         [HttpPost]
-        public User Create([FromBody] User user)    
+        public IActionResult Create([FromBody] User user)    
         {
-            return _userServices.CreateUser(user);
+            if (_userServices.CreateUser(user))
+            {
+                return Ok(user);
+            }
+            return Ok("Usuário JÁ Cadastrado");
         }
 
         [HttpPut]
-        public IActionResult Update([FromBody] User user)   
+        public IActionResult Update([FromBody] User user)
         {
-            if (user == null)
+            if (_userServices.GetUserById(user.Id) is null)
             {
-                return BadRequest("Usuário NÃO encontrado");
+                return BadRequest("Usuário NÃO Cadastrado");
             }
-            else
-            {
-                return Ok(_userServices.UpdateUser(user));
-            }
+            return Ok(_userServices.UpdateUser(user));
         }
 
         [HttpDelete("{id}")]
@@ -84,10 +106,43 @@ namespace Treinando.Controllers
         // users/search?term="test"&page=1
         [HttpGet("/search")]
         //Lista usuários que contenham o 'term' em seu Nome, Login ou Email... Paginando a partir do usuário 'offset', listando de 'limit' em 'limit' usuários
-        public List<User> Search([FromQuery]string term, int offset, int limit) 
+        public IActionResult Search([FromQuery]string searchTerm, int initialRecord = 0, int limitPerPage = 10) 
         {
-            return _userServices.SearchUsers(term, offset, limit);
+            if(_userServices.SearchUsers(searchTerm, initialRecord, limitPerPage).Count == 0)
+            {
+                return Ok("Nenhum Usuário encontrado para essa Pesquisa!");
+            }
+            return Ok(_userServices.SearchUsers(searchTerm, initialRecord, limitPerPage));
         }
 
+        [HttpGet("cpf/{cpf}")]
+        public IActionResult GetByCPF(string cpf)    //Retorna Usuário pelo CPF
+        {
+            if (_userServices.GetUserByCPF(cpf) is null)
+            {
+                return Ok("Usuário NÃO Cadastrado!");
+            }
+            return Ok(_userServices.GetUserByCPF(cpf));
+        }
+
+        [HttpGet("email/{email}")]
+        public IActionResult GetByEmail(string email)    //Retorna Usuário pelo E-Mail
+        {
+            if (_userServices.GetUserByEmail(email) is null)
+            {
+                return Ok("Usuário NÃO Cadastrado!");
+            }
+            return Ok(_userServices.GetUserByEmail(email));
+        }
+
+        [HttpGet("birthday/{birthday}")]
+        public IActionResult GetByBirthday(string birthday)    //Retorna Usuário pela Data de Nascimento
+        {
+            if (_userServices.GetUsersByBirthday(birthday).Count == 0)
+            {
+                return Ok("Nenhum Usuário Encontrado!");
+            }
+            return Ok(_userServices.GetUsersByBirthday(birthday));
+        }
     }
 }
