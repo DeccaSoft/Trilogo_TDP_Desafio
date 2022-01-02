@@ -34,5 +34,9 @@ namespace Treinando.Models
 
         public Payment Payment { get; set; } = Payment.Cash;
 
+        public Order()
+        {
+            
+        }
     }
 }

@@ -15,12 +15,14 @@ namespace Treinando.Controllers
     public class UsersController : ControllerBase
     {
         private readonly UserServices _userServices;
+        private readonly AddressServices _addressServices;
         private readonly DBContext _dbContext;
         //Injeção de Dependências
-        public UsersController(DBContext dbContext, UserServices userServices)
+        public UsersController(DBContext dbContext, UserServices userServices, AddressServices addressServices)
         {
             _dbContext = dbContext;
             _userServices = userServices;
+            _addressServices = addressServices;
         }
 
         [HttpGet]
@@ -33,14 +35,14 @@ namespace Treinando.Controllers
             return Ok(_userServices.GetListUsers());
         }
         
-        [HttpGet("id/{id}")]  
-        public IActionResult GetById(int id)    //Retorna Usuário pelo Id
+        [HttpGet("id/{userId}")]  
+        public IActionResult GetById(int userId)    //Retorna Usuário pelo Id
         {
-            if (_userServices.GetUserById(id) is null)
+            if (_userServices.GetUserById(userId) is null)
             {
                 return Ok("Usuário NÃO Cadastrado!");
             }
-            return Ok(_userServices.GetUserById(id));
+            return Ok(_userServices.GetUserById(userId));
         }
 
         [HttpGet("login/{login}")]
@@ -55,19 +57,19 @@ namespace Treinando.Controllers
 
         //PLUS
 
-        [HttpGet("{id}/orders")]
-        public IActionResult GetUserOrders(int id)    //Retorna Usuário e Todos seus Pedidos pelo seu Id
+        [HttpGet("{userId}/orders")]
+        public IActionResult GetUserOrders(int userId)    //Retorna Usuário e Todos seus Pedidos pelo seu Id
         {
-            if (_userServices.GetUserById(id) is null)
+            if (_userServices.GetUserById(userId) is null)
             {
                 return Ok("Usuário NÃO Cadastrado!");
             }
 
-            if (_userServices.GetUserWithOrders(id).Count == 0)
+            if (_userServices.GetUserWithOrders(userId).Count == 0)
             {
                 return Ok("Nenhum Pedido encontrado para o Usuário Especificado!");
             }
-            return Ok(_userServices.GetUserWithOrders(id));
+            return Ok(_userServices.GetUserWithOrders(userId));
         }
         
         [HttpPost]
@@ -90,16 +92,28 @@ namespace Treinando.Controllers
             return Ok(_userServices.UpdateUser(user));
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)        
+        
+        [HttpPut("user/{userId}/address/{addressId}")]
+        public IActionResult UpdateUserAddress(int userId, int addressId)
         {
-            if (_userServices.DeleteUser(id))
+            if (_userServices.UpdateUserAddress(userId, addressId))
             {
-                return Ok($"Usuário de ID: {id} Removido com Sucesso !");
+                return Ok("Endereço Alterado com Sucesso!");
+            }
+            return Ok("Usuário ou Endereço NÃO cadastrado!");
+        }
+        
+
+        [HttpDelete("{userId}")]
+        public IActionResult Delete(int userId)        
+        {
+            if (_userServices.DeleteUser(userId))
+            {
+                return Ok($"Usuário de ID: {userId} Removido com Sucesso !");
             }
             else
             {
-                return BadRequest($"Usuário de ID: {id} NÃO Encontrado ou Possui Algum Pedido Registrado em seu Nome!");
+                return BadRequest($"Usuário de ID: {userId} NÃO Encontrado ou Possui Algum Pedido Registrado em seu Nome!");
             }
         }
         

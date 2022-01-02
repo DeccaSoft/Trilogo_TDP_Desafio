@@ -33,11 +33,11 @@ namespace Aula6.Services
             return _dbContext.Users.Include(u => u.Address).Include(u => u.Orders).FirstOrDefault(u => u.Login == login);
         }
 
-        public List<Order> GetUserWithOrders(int id)
+        public List<Order> GetUserWithOrders(int userId)
         {
 
             //return _dbContext.Users.Include(u => u.Orders).Where(u => u.Login == login).ToList();
-            return _dbContext.Orders.Where(u => u.UserId == id).ToList();
+            return _dbContext.Orders.Where(u => u.UserId == userId).ToList();
         }
 
         public bool CreateUser(User user)
@@ -57,12 +57,28 @@ namespace Aula6.Services
         public User UpdateUser(User user)
         {
             var userModel = _dbContext.Users.Find(user.Id);
-            //_dbContext.Products.Update(product);
+            //var addressModel = _dbContext.Adresses.Find(user.Address.Id);
             user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+            //_dbContext.Users.Update(user);
             _dbContext.Entry(userModel).CurrentValues.SetValues(user);
+            //_dbContext.Entry(addressModel).CurrentValues.SetValues(user.Address);
             _dbContext.SaveChanges();
             return user;
         }
+         
+
+        public bool UpdateUserAddress(int userId, int addressId)
+        {
+            var user = _dbContext.Users.Find(userId);
+            var address = _dbContext.Adresses.Find(addressId);
+            if(user is null || address is null) { return false; }
+            user.Address = address;
+            _dbContext.Users.Update(user);
+            _dbContext.Adresses.Update(address);
+            _dbContext.SaveChanges();
+            return true;
+        }
+        
 
         public bool DeleteUser(int id)        
         {

@@ -11,5 +11,10 @@ namespace Treinando.Models
         public string Number { get; set; } = "";  //por ser um campo string, aceita o complemento junto
         public string City { get; set; } = "";
         public string State { get; set; } = "";
+
+        public Address()
+        {
+
+        }
     }
 }

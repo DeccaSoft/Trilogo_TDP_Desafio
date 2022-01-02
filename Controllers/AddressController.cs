@@ -34,14 +34,14 @@ namespace Aula6.Controllers
             return Ok(_addressServices.ListAddress());
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetById(int id)    //Retorna Endereço pelo Id
+        [HttpGet("{idAddress}")]
+        public IActionResult GetById(int idAddress)    //Retorna Endereço pelo Id
         {
-            if (_addressServices.GetAddressById(id) is null)
+            if (_addressServices.GetAddressById(idAddress) is null)
             {
                 return Ok("Endereço NÃO encontrado!");
             }
-            return Ok(_addressServices.GetAddressById(id));
+            return Ok(_addressServices.GetAddressById(idAddress));
         }
 
         [HttpGet("street/{street}")]
@@ -86,16 +86,16 @@ namespace Aula6.Controllers
             
         }
         
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        [HttpDelete("{idAddress}")]
+        public IActionResult Delete(int idAddress)
         {
-            if (_addressServices.DeleteAddress(id))
+            if (_addressServices.DeleteAddress(idAddress))
             {
-                return Ok($"O Endereço de ID: {id} Removido com Sucesso !");
+                return Ok($"O Endereço de ID: {idAddress} Removido com Sucesso !");
             }
             else
             {
-                return BadRequest($"Endereço de ID: {id} NÃO Encontrado !");
+                return BadRequest($"Endereço de ID: {idAddress} NÃO Encontrado !");
             }
         }
 

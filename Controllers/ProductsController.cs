@@ -35,24 +35,24 @@ namespace Aula6.Controllers
             return Ok(_productServices.ListProducts());
         }
 
-        [HttpGet("id/{id}")]
-        public IActionResult GetById(int id)    //Retorna Produto pelo Id
+        [HttpGet("id/{prodId}")]
+        public IActionResult GetById(int prodId)    //Retorna Produto pelo Id
         {
-            if (_productServices.GetProductById(id) is null)
+            if (_productServices.GetProductById(prodId) is null)
             {
                 return Ok("Produto NÃO encontrado!");
             }
-            return Ok(_productServices.GetProductById(id));
+            return Ok(_productServices.GetProductById(prodId));
         }
 
-        [HttpGet("name/{name}")]
-        public IActionResult GetByName(string name)    //Retorna Produto pelo Nome
+        [HttpGet("name/{prodName}")]
+        public IActionResult GetByName(string prodName)    //Retorna Produto pelo Nome
         {
-            if (_productServices.GetProductByName(name).Count == 0)
+            if (_productServices.GetProductByName(prodName).Count == 0)
             {
                 return Ok("Nenhum Produto Encontrado com este Nome!");
             }
-            return Ok(_productServices.GetProductByName(name));
+            return Ok(_productServices.GetProductByName(prodName));
         }
 
         [HttpPost]
@@ -75,16 +75,16 @@ namespace Aula6.Controllers
             return Ok(_productServices.UpdateProduct(product));
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)        
+        [HttpDelete("{prodId}")]
+        public IActionResult Delete(int prodId)        
         {
-            if (_productServices.DeleteProduct(id))
+            if (_productServices.DeleteProduct(prodId))
             {
-                return Ok($"O Produto de ID: {id} Removido com Sucesso !");
+                return Ok($"O Produto de ID: {prodId} Removido com Sucesso !");
             }
             else
             {
-                return BadRequest($"Produto de ID: {id} NÃO Encontrado !");
+                return BadRequest($"Produto de ID: {prodId} NÃO Encontrado !");
             }
         }
 
@@ -104,14 +104,14 @@ namespace Aula6.Controllers
         //PLUS
 
         //Lista Quantidade de um produto em estoque
-        [HttpGet("inventory/{id}")]
-        public IActionResult GetInventory(int id)    //Retorna Estoque do Produto pelo Id
+        [HttpGet("inventory/{prodId}")]
+        public IActionResult GetInventory(int prodId)    //Retorna Estoque do Produto pelo Id
         {
-            if(_productServices.GetProductById(id) is null)
+            if(_productServices.GetProductById(prodId) is null)
             {
                 return Ok("Produto NÃO Encontrado!");
             }
-            return Ok("Total em Estoque: " + _productServices.GetProductInventory(id));
+            return Ok("Total em Estoque: " + _productServices.GetProductInventory(prodId));
         }
 
         //Listar Produtos com estoque abaixo do Mínimo
