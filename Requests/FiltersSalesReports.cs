@@ -13,6 +13,9 @@ namespace Aula6.Requests
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public List<OrderStatus> Statuses { get; set; }
-        public List<string> Users { get; set; }
+        public List<int> UsersId { get; set; }
+
+        //public List<Order> Orders { get; set; }
+
     }
 }

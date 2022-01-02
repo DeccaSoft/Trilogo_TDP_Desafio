@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Aula6.Enums;
 using Aula6.Requests;
 using Aula6.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Treinando.Data;
 using Treinando.Models;
 
 namespace Aula6.Controllers
@@ -16,16 +18,19 @@ namespace Aula6.Controllers
     public class OrdersReportsController : ControllerBase
     {
         private readonly ReportServices _reportServices;
-        public OrdersReportsController(ReportServices reportServices)
+        private readonly DBContext _dbContext;
+        public OrdersReportsController(ReportServices reportServices, DBContext dBContext)
         {
             _reportServices = reportServices;
+            _dbContext = dBContext;
         }
 
-        [HttpGet]
-        public IActionResult GetSearchReport([FromBody] FiltersSalesReports search)
+        [HttpPost]
+        public IActionResult GetSearchReport(DateTime startDate, DateTime endDate, [FromQuery] List<int> usersId, List<OrderStatus> statuses)
         {
-            OrderReport report = _reportServices.CreateGeneralReport(search.StartDate, search.EndDate, search.Statuses, search.Users);
-            if(report == null)
+
+            OrderReport report = _reportServices.CreateGeneralReport(startDate, endDate, statuses, usersId);
+            if (report == null)
             {
                 return BadRequest("Você passou algum Parâmetro Inválido! Tente Novamente...");
             }

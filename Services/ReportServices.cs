@@ -17,35 +17,31 @@ namespace Aula6.Services
             _dbContext = dbContext;
         }
 
-        public OrderReport CreateGeneralReport(DateTime startDate, DateTime endDate, List<OrderStatus> statusesSearch, List<string> usersSearch)
+        public OrderReport CreateGeneralReport(DateTime startDate, DateTime endDate, List<OrderStatus> statuses, List<int> usersId)
         {
             if (DateTime.Compare(startDate, endDate) < 0)
             {
                 return null;
             }
-
-            List<Order> orders = _dbContext.Orders.Include(o => o.User).Where(o => o.CreationDate >= startDate && o.CreationDate <= endDate).ToList();
-            List<Order> OrdersSearch = new List<Order>();
-
-            if (usersSearch == null)
+            List<Order> orders = _dbContext.Orders.Where(o => o.CreationDate >= startDate && o.FinishedDate <= endDate).ToList();
+            for (int i=0; i < statuses.Count; i++)
             {
-                return null;
+                for (int j=0; j < usersId.Count; j++)
+                {
+                    orders.RemoveAll(o => o.Status != statuses[i] || o.UserId != usersId[j]);
+                }
             }
 
-            usersSearch.ForEach(userLogin => OrdersSearch = OrdersSearch.Union(orders.Where(o => o.User.Login == userLogin).ToList()).ToList());
-            orders = OrdersSearch;
-            OrdersSearch = new List<Order>();
-
-            if (statusesSearch == null)
+            int totalCompleted = 0;
+            int totalCanceled = 0;
+            decimal ordersTotalValue = 0;
+            for (int i=0; i < orders.Count; i++)
             {
-                return null;
+                if(orders[i].Status == OrderStatus.Completed) { totalCompleted++; }
+                if(orders[i].Status == OrderStatus.Canceled) { totalCanceled++; }
+                ordersTotalValue += orders[i].TotalValue;
             }
-            statusesSearch.ForEach(status => OrdersSearch = OrdersSearch.Union(orders.Where(o => o.Status == status).ToList()).ToList());
-            orders = OrdersSearch;
 
-            int totalCompleted = orders.Aggregate(0, (sum, order) => order.Status == OrderStatus.Completed ? sum + 1 : sum);
-            int totalCanceled = orders.Aggregate(0, (sum, order) => order.Status == OrderStatus.Canceled ? sum + 1 : sum);
-            decimal ordersTotalValue = orders.Aggregate(0m, (sum, order) => sum + order.TotalValue);
             return new OrderReport
             {
                 FinishedOrdersAmount = totalCompleted,
