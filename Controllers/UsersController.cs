@@ -11,7 +11,7 @@ namespace Treinando.Controllers
 {
     [ApiController]
     [Route("/users")]
-    //[Authorize(Roles = "Gerente, Funcionario")]
+    [Authorize(Roles = "Gerente, Funcionario")]
     public class UsersController : ControllerBase
     {
         private readonly UserServices _userServices;

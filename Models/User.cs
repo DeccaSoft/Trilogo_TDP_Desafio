@@ -10,21 +10,22 @@ namespace Treinando.Models
     {
         public int Id { get; set; }
 
-        //[Required(ErrorMessage = "O Campo Nome é Obrigatório.")]
+        [Required(ErrorMessage = "O Campo Nome é Obrigatório.")]
         public string Name { get; set; }
 
-        //[Required(ErrorMessage = "O Campo Login é Obrigatório.")]
+        [Required(ErrorMessage = "O Campo Login é Obrigatório.")]
         public string Login { get; set; }
 
-        //[Required(ErrorMessage = "O Campo Senha é Obrigatório.")]
+        [Required(ErrorMessage = "O Campo Senha é Obrigatório.")]
         public string Password { get; set; }
 
-        //[Required(ErrorMessage = "O Campo CPF é Obrigatório.")]
+        [Required(ErrorMessage = "O Campo CPF é Obrigatório.")]
         public string CPF { get; set; }
 
-        //[Required(ErrorMessage = "O Campo E-Mail é Obrigatório.")]
+        [Required(ErrorMessage = "O Campo E-Mail é Obrigatório.")]
         public string Email { get; set; }
-
+        //[Required]
+        //public DateTime CreationDate { get; set; } = DateTime.Now;
         public DateTime Birthday { get; set; }
 
         public Address? Address { get; set; }
