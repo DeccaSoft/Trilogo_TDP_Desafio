@@ -13,7 +13,7 @@ namespace Aula6.Controllers
 {
     [ApiController]
     [Route("/products")]
-    [Authorize(Roles = "Gerente")]
+    //[Authorize(Roles = "Gerente")]
     public class ProductsController : ControllerBase
     {
         private readonly ProductServices _productServices;

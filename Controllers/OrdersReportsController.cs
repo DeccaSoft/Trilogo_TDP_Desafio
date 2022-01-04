@@ -14,7 +14,7 @@ namespace Aula6.Controllers
 {
     [ApiController]
     [Route("report")]
-    [Authorize(Roles = "Admin, Gerente")]
+    //[Authorize(Roles = "Admin, Gerente")]
     public class OrdersReportsController : ControllerBase
     {
         private readonly ReportServices _reportServices;
