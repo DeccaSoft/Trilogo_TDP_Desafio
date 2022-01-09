@@ -24,17 +24,13 @@ namespace Treinando.Models
 
         [Required(ErrorMessage = "O Campo E-Mail é Obrigatório.")]
         public string Email { get; set; }
-        //[Required]
-        //public DateTime CreationDate { get; set; } = DateTime.Now;
+        [Required]
+        public DateTime CreationDate { get; set; } = DateTime.Now;
         public DateTime Birthday { get; set; }
+
+        public string? Role { get; set; }
 
         public Address? Address { get; set; }
         public List<Order>? Orders { get; set; }
-
-        public User()
-        {
-            
-        }
-
     }
 }

@@ -13,10 +13,5 @@ namespace Treinando.Models
         public DateTime EndDate { get; set; } = DateTime.Now;
         public List<OrderStatus>? Status { get; set; }
         public List<int> UserIds { get; set; }
-
-        public OrderSearch()
-        {
-
-        }
     }
 }

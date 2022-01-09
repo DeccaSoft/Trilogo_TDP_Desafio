@@ -12,7 +12,7 @@ namespace Aula6.Controllers
 {
     [ApiController]
     [Route("/address")]
-    //[Authorize(Roles = "Funcionario, Gerente")]
+    [Authorize(Roles = "Funcionario, Gerente, Admin")]
     public class AddressController : ControllerBase
     {
         private readonly AddressServices _addressServices;

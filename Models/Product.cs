@@ -17,10 +17,5 @@ namespace Treinando.Models
 
         //Plus
         public int StockMinimum { get; set; } = 10;
-
-        public Product()
-        {
-
-        }
     }
 }

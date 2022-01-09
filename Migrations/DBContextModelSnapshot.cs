@@ -53,8 +53,7 @@ namespace Aula6.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(65,30)")
-                        .HasColumnName("decimal(10, 2)");
+                        .HasColumnType("decimal(10,2)");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -91,8 +90,7 @@ namespace Aula6.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("TotalValue")
-                        .HasColumnType("decimal(65,30)")
-                        .HasColumnName("decimal(10, 2)");
+                        .HasColumnType("decimal(10,2)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -117,8 +115,7 @@ namespace Aula6.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(65,30)")
-                        .HasColumnName("decimal(10, 2)");
+                        .HasColumnType("decimal(10,2)");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -147,6 +144,9 @@ namespace Aula6.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -161,6 +161,9 @@ namespace Aula6.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Role")
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");

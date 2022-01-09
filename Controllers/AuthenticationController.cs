@@ -54,9 +54,10 @@ namespace Aula6.Controllers
                 {
                     new Claim(ClaimTypes.Name, user.Name),
                     new Claim(ClaimTypes.Email, user.Email),
-                    new Claim(ClaimTypes.Role, "Gerente"),
-                    new Claim(ClaimTypes.Role, "Funcionario"),
-                    new Claim(ClaimTypes.Role, "Admin")
+                    new Claim(ClaimTypes.Role, user.Role)
+                    //new Claim(ClaimTypes.Role, "Gerente"),
+                    //new Claim(ClaimTypes.Role, "Funcionario"),
+                    //new Claim(ClaimTypes.Role, "Admin")
                     //new Claim("orders", "c-r-u-d")
 
 

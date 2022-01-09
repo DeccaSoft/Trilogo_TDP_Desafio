@@ -13,7 +13,7 @@ namespace Treinando.Controllers
 {
     [ApiController]
     [Route("/orders")]
-    //[Authorize(Roles = "Funcionario, Gerente")]
+    [Authorize(Roles = "Funcionario, Gerente, Admin")]
     public class OrdersController : ControllerBase
     {
         private readonly OrderServices _orderServices;

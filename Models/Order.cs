@@ -33,10 +33,5 @@ namespace Treinando.Models
         public DateTime? FinishedDate { get; set; } = null;
 
         public Payment Payment { get; set; } = Payment.Cash;
-
-        public Order()
-        {
-            
-        }
     }
 }
