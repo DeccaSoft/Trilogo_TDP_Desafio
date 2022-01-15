@@ -13,7 +13,7 @@ namespace Treinando.Controllers
 {
     [ApiController]
     [Route("/orders")]
-    [Authorize(Roles = "Funcionario, Gerente, Admin")]
+    //[Authorize(Roles = "Funcionario, Gerente, Admin")]
     public class OrdersController : ControllerBase
     {
         private readonly OrderServices _orderServices;
@@ -132,7 +132,7 @@ namespace Treinando.Controllers
             return Ok("Quantidade Insuficiente em Estoque...");
         }
 
-        [HttpPut("order/{itemId}")]
+        [HttpPut("remove/{itemId}")]
         public IActionResult downgradeItem(int userId, int itemId, int prodId)          //Remove um Item
         {
             User user = _userServices.GetUserById(userId);

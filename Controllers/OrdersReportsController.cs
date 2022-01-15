@@ -26,7 +26,7 @@ namespace Aula6.Controllers
         }
 
         [HttpPost]
-        public IActionResult GetSearchReport(DateTime startDate, DateTime endDate, [FromQuery] List<int> usersId, List<OrderStatus> statuses)
+        public IActionResult GetSearchReport(DateTime startDate, DateTime endDate, [FromQuery] List<int> usersId, [FromQuery] List<OrderStatus> statuses)
         {
 
             OrderReport report = _reportServices.CreateGeneralReport(startDate, endDate, statuses, usersId);

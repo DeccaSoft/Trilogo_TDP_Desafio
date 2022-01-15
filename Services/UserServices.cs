@@ -42,15 +42,19 @@ namespace Aula6.Services
 
         public bool CreateUser(User user)
         {
+            /*
             if (_dbContext.Users.FirstOrDefault(u => u.Id.Equals(user.Id)) != null
                 || _dbContext.Users.FirstOrDefault(u => u.Name.Equals(user.Name) && u.Login.Equals(user.Login)
                     || u.CPF.Equals(user.CPF) || u.Email.Equals(user.Email) && u.Login.Equals(user.Login)) != null)
+            */
+            if(_dbContext.Users.Any(u => u.Login == user.Login || u.Email == user.Email || u.CPF == user.CPF))
             {
                 return false;
             }
             user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
             _dbContext.Users.Add(user);
             _dbContext.SaveChanges();
+            //UpdateUserAddress(user.Id, user.Address.Id);
             return true;
         }
 
@@ -61,6 +65,7 @@ namespace Aula6.Services
             user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
             //_dbContext.Users.Update(user);
             _dbContext.Entry(userModel).CurrentValues.SetValues(user);
+            //_dbContext.Users.Update(user);
             //_dbContext.Entry(addressModel).CurrentValues.SetValues(user.Address);
             _dbContext.SaveChanges();
             return user;

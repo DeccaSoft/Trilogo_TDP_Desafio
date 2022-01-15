@@ -23,7 +23,20 @@ namespace Aula6.Services
             {
                 return null;
             }
-            List<Order> orders = _dbContext.Orders.Where(o => o.CreationDate >= startDate && o.FinishedDate <= endDate).ToList();
+
+            List<Order> orders = _dbContext.Orders.Where(o => o.CreationDate >= startDate && o.CreationDate <= endDate
+                && usersId.Contains(o.UserId) && statuses.Contains(o.Status)).ToList();
+
+            return new OrderReport
+            {
+                FinishedOrdersAmount = orders.Count(o => o.Status == OrderStatus.Completed),
+                CancelledOrdersAmount = orders.Count(o => o.Status == OrderStatus.Canceled),
+                OrdersTotalValue = orders.Sum(o => o.TotalValue),
+                Orders = orders
+            };
+
+            //Solução Antiga... Deixei aqui para estudo posterior.
+            /*
             for (int i=0; i < statuses.Count; i++)
             {
                 for (int j=0; j < usersId.Count; j++)
@@ -31,7 +44,7 @@ namespace Aula6.Services
                     orders.RemoveAll(o => o.Status != statuses[i] || o.UserId != usersId[j]);
                 }
             }
-
+            
             int totalCompleted = 0;
             int totalCanceled = 0;
             decimal ordersTotalValue = 0;
@@ -49,6 +62,7 @@ namespace Aula6.Services
                 OrdersTotalValue = ordersTotalValue,
                 Orders = orders
             };
+            */
         }
     }
 }
