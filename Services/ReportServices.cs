@@ -19,7 +19,7 @@ namespace Aula6.Services
 
         public OrderReport CreateGeneralReport(DateTime startDate, DateTime endDate, List<OrderStatus> statuses, List<int> usersId)
         {
-            if (DateTime.Compare(startDate, endDate) < 0)
+            if (endDate < startDate)
             {
                 return null;
             }
@@ -37,6 +37,10 @@ namespace Aula6.Services
 
             //Solução Antiga... Deixei aqui para estudo posterior.
             /*
+            if (DateTime.Compare(startDate, endDate) < 0)
+            {
+                return null;
+            }
             for (int i=0; i < statuses.Count; i++)
             {
                 for (int j=0; j < usersId.Count; j++)
