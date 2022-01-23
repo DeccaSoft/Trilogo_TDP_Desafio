@@ -59,41 +59,6 @@ namespace Treinando.Controllers
             return Ok(_orderServices.getOrders(userModel));
         }
 
-        /*
-        [HttpGet("order/{orderId}")]
-        public IActionResult ListItemsByOrderId(int orderId)         //Lista os items de um pedido (pega pelo id do pedido)
-        {
-            var order = _orderServices.getOrder(orderId);
-
-            if (order == null)
-            {
-                return BadRequest("Pedido Inexistente!");
-            }
-
-            if (_orderServices.ListItems(order).Count == 0 || _orderServices.ListItems(order) is null)
-            {
-                return BadRequest("Este Pedido Ainda NÃO possui nenhum Item Cadastrado!");
-            }
-            return Ok(_orderServices.ListItems(order));
-        }
-        */
-        /*
-        [HttpGet("{orderId}/items")]
-        public IActionResult GetOrderItems(int orderId)    //Retorna Pedido e Todos seus Items
-        {
-            if (_orderServices.getOrder(orderId) is null)
-            {
-                return Ok("Pedido Inexistente!");
-            }
-
-            if (_orderServices.getOrderWithItems(orderId).Count == 0)
-            {
-                return Ok("Este Pedido ainda NÃO contém nenhum Item!");
-            }
-            return Ok(_orderServices.getOrderWithItems(orderId));
-        }
-        */
-
         //Se não houver pedido aberto -> Cria pedido em branco
         [HttpPost("{login}")]
         public IActionResult CreateOrderForUser(string login)
@@ -151,7 +116,7 @@ namespace Treinando.Controllers
             }
         }
 
-        //Edita Quantidades dos Ítens (Para mais) ou (para menos - bastando colocar sinal negativo)
+        //Edita Quantidades dos Ítens (Para Mais) ou (Para Menos - bastando colocar sinal negativo)
         [HttpPut("item/{qtd}")]
         public IActionResult changeItemQuantity(int userId, int itemId, int prodId, int qtd)
         {

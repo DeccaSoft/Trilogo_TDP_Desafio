@@ -72,7 +72,7 @@ namespace Treinando.Controllers
             return Ok(_userServices.GetUserWithOrders(userId));
         }
         
-        [HttpPost]
+        [HttpPost]                                              //Cria/Cadastra um Usuário
         public IActionResult Create([FromBody] User user)    
         {
             if (_userServices.CreateUser(user))
@@ -82,7 +82,7 @@ namespace Treinando.Controllers
             return Ok("Usuário JÁ Cadastrado");
         }
 
-        [HttpPut]
+        [HttpPut]                                           //Edita Usuário
         public IActionResult Update([FromBody] User user)
         {
             if (_userServices.GetUserById(user.Id) is null)
@@ -104,7 +104,7 @@ namespace Treinando.Controllers
         }
         
 
-        [HttpDelete("{userId}")]
+        [HttpDelete("{userId}")]                        //Deleta Usuário
         public IActionResult Delete(int userId)        
         {
             if (_userServices.DeleteUser(userId))
@@ -117,7 +117,6 @@ namespace Treinando.Controllers
             }
         }
         
-        // users/search?term="test"&page=1
         [HttpGet("/search")]
         //Lista usuários que contenham o 'term' em seu Nome, Login ou Email... Paginando a partir do usuário 'offset', listando de 'limit' em 'limit' usuários
         public IActionResult Search([FromQuery]string searchTerm, int initialRecord = 0, int limitPerPage = 10) 

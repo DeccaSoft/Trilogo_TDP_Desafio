@@ -35,7 +35,7 @@ namespace Aula6.Services
             return _dbContext.Adresses.Where(n => n.Neighborhood.Contains(neighborhood)).ToList();
         }
 
-        public bool CreateAddress(Address address)
+        public bool CreateAddress(Address address)      //Cadastra um Endereço
         {
             if (_dbContext.Adresses.FirstOrDefault(a => a.Id.Equals(address.Id)) != null
                 || _dbContext.Adresses.FirstOrDefault(a => a.Street.Equals(address.Street) && a.Neighborhood.Equals(address.Neighborhood) 
@@ -49,7 +49,7 @@ namespace Aula6.Services
         }
 
         
-        public Address UpdateAddress(Address address)  //Address
+        public Address UpdateAddress(Address address)  //Edita um Endereço
         {
             var addressModel = _dbContext.Adresses.Find(address.Id);
             //_dbContext.Products.Update(product);
@@ -58,7 +58,7 @@ namespace Aula6.Services
             return address;
         }
         
-        public bool DeleteAddress(int id)
+        public bool DeleteAddress(int id)       //Remove um Endereço
         {
             var address = _dbContext.Adresses.Find(id);
             if (address != null)

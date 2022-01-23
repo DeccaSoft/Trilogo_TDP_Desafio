@@ -30,7 +30,7 @@ namespace Aula6.Services
             return _dbContext.Products.Where(n => n.Name.Equals(name)).ToList();
         }
 
-        public bool CreateProduct(Product product)
+        public bool CreateProduct(Product product)          //Cadastra um Produto
         {
             if (_dbContext.Products.FirstOrDefault(p => p.Id.Equals(product.Id)) != null
                 || _dbContext.Products.FirstOrDefault(p => p.Name.Equals(product.Name) && p.Description.Equals(product.Description)
@@ -43,7 +43,7 @@ namespace Aula6.Services
             return true;
         }
 
-        public Product UpdateProduct(Product product)
+        public Product UpdateProduct(Product product)       //Edita um Produto
         {
             var productModel = _dbContext.Products.Find(product.Id);
             //_dbContext.Products.Update(product);
@@ -52,7 +52,7 @@ namespace Aula6.Services
             return product;
         }
 
-        public bool DeleteProduct(int id)
+        public bool DeleteProduct(int id)       //Apaga um Produto
         {
             var product = _dbContext.Products.Find(id);
             if (product != null)

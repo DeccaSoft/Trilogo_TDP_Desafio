@@ -35,7 +35,8 @@ namespace Aula6.Services
                 Orders = orders
             };
 
-            //Solução Antiga... Deixei aqui para estudo posterior.
+            //Solução Antiga... Deixei aqui para estudo posterior. (Aprendendo com meus erros)
+
             /*
             if (DateTime.Compare(startDate, endDate) < 0)
             {

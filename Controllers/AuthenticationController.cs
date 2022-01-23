@@ -3,8 +3,6 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
-//using Aula6.Data;
-//using Aula6.Models;
 using Aula6.Requests;
 using Auth0.ManagementApi.Models.Rules;
 using Google;

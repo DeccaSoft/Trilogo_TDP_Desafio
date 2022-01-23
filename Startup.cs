@@ -81,6 +81,7 @@ namespace Treinando
 
 
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "Aula6", Version = "v1"}); });
+
             // Cilcos de Vida
             //services.AddScoped<>();    => Um objeto por Requisição (request / response)
             //services.AddSingleton<>(); => Um único objeto por aplicação

@@ -27,19 +27,6 @@ namespace Aula6.Services
             return order;
         }
 
-        /*
-        public List<Item> ListItems(Order order)
-        {
-            return order.Items;
-        }
-        */
-        /*
-        public List<Item> getOrderWithItems(int orderId)
-        {
-            //return _dbContext.Orders.Include(i => i.Items).Where(i => i.OrderId == orderId).ToList();
-            return _dbContext.Items.Where(o => o.OrderId == orderId).ToList();
-        }
-        */
         public Order GetUnfinishedOrder(User user)
         {
             return _dbContext.Orders.Include(o => o.Items).FirstOrDefault(o => o.UserId == user.Id && (o.Status == OrderStatus.Open || o.Status == OrderStatus.InProgress));

@@ -55,7 +55,7 @@ namespace Aula6.Controllers
             return Ok(_productServices.GetProductByName(prodName));
         }
 
-        [HttpPost]
+        [HttpPost]                                          //Cria/Cadastra um Produto
         public IActionResult Create([FromBody] Product product)   
         {
             if (_productServices.CreateProduct(product))
@@ -65,7 +65,7 @@ namespace Aula6.Controllers
             return Ok("Produto JÁ Cadastrado !");
         }
 
-        [HttpPut]
+        [HttpPut]                                       //Edita um Produto
         public IActionResult Update([FromBody] Product product)   
         {
             if(_productServices.GetProductById(product.Id) is null)
@@ -75,7 +75,7 @@ namespace Aula6.Controllers
             return Ok(_productServices.UpdateProduct(product));
         }
 
-        [HttpDelete("{prodId}")]
+        [HttpDelete("{prodId}")]                            //Deleta um Produto
         public IActionResult Delete(int prodId)        
         {
             if (_productServices.DeleteProduct(prodId))
@@ -88,7 +88,6 @@ namespace Aula6.Controllers
             }
         }
 
-        // users/search?term="test"&page=1
         [HttpGet("search")]
         //Lista produtos que contenham o 'term' em seu Nome,ou Descrição... Paginando a partir do produto 'offset', listando de 'limit' em 'limit' produtos
 

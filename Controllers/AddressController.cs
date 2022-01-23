@@ -65,7 +65,7 @@ namespace Aula6.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Address address)
+        public IActionResult Create([FromBody] Address address) //Cria/Cadastra um Endereço
         {
             if (_addressServices.CreateAddress(address))
             {
@@ -76,7 +76,7 @@ namespace Aula6.Controllers
         }
                 
         [HttpPut]
-        public IActionResult Update([FromBody] Address address)
+        public IActionResult Update([FromBody] Address address)     //Altera um Endereço
         {
             if (_addressServices.GetAddressById(address.Id) is null)
             {
@@ -86,7 +86,7 @@ namespace Aula6.Controllers
             
         }
         
-        [HttpDelete("{idAddress}")]
+        [HttpDelete("{idAddress}")]                                 //Deleta um Endereço
         public IActionResult Delete(int idAddress)
         {
             if (_addressServices.DeleteAddress(idAddress))
@@ -99,7 +99,6 @@ namespace Aula6.Controllers
             }
         }
 
-        // users/search?term="test"&page=1
         [HttpGet("search")]
         //Lista endereços que contenham o 'term' em sua Rua, Número, Bairro, Cidade ou Estado... Paginando a partir do endereço 'offset', listando de 'limit' em 'limit' endereços
 
