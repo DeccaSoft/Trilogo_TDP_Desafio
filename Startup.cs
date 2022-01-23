@@ -37,7 +37,7 @@ namespace Treinando
 
         // This method gets called by the runtime. Use this method to add services to the container.
         
-        public void ConfigureServices(IServiceCollection services)  //Método utilizado para se adicionar de Serviços de Terceiros e Injeção de Dependências
+        public void ConfigureServices(IServiceCollection services)  //Método utilizado para se adicionar Serviços de Terceiros e Injeção de Dependências
         {
             services.Configure<ApiBehaviorOptions>(options => 
             {

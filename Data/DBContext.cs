@@ -16,7 +16,7 @@ namespace Treinando.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseSqlite(new SqliteConnection("Filename=DBContext.db"));
-            optionsBuilder.UseMySql(new MySqlConnection("server=localhost;database=DBContext.db;uid=root;pwd=ama1000"));
+            optionsBuilder.UseMySql(new MySqlConnection("server=localhost;database=DBContext;uid=root;pwd=MS1778amA"));
         }
         */
 

@@ -93,7 +93,7 @@ namespace Treinando.Controllers
         }
 
         
-        [HttpPut("user/{userId}/address/{addressId}")]
+        [HttpPut("user/{userId}/address/{addressId}")]              //Liga um endereço a um usuário
         public IActionResult UpdateUserAddress(int userId, int addressId)
         {
             if (_userServices.UpdateUserAddress(userId, addressId))

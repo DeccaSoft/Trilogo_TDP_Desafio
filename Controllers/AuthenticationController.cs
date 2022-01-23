@@ -55,9 +55,6 @@ namespace Aula6.Controllers
                     new Claim(ClaimTypes.Name, user.Name),
                     new Claim(ClaimTypes.Email, user.Email),
                     new Claim(ClaimTypes.Role, user.Role)
-                    //new Claim(ClaimTypes.Role, "Gerente"),
-                    //new Claim(ClaimTypes.Role, "Funcionario"),
-                    //new Claim(ClaimTypes.Role, "Admin")
                     //new Claim("orders", "c-r-u-d")
 
 
@@ -66,7 +63,7 @@ namespace Aula6.Controllers
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature) //Tipo de Algorítimo da Assinatura - Sha256
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);          //Cria o Token
-            return tokenHandler.WriteToken(token);                          //Transgorma o Token em String para ser Retornado
+            return tokenHandler.WriteToken(token);                          //Transforma o Token em String para ser Retornado
         }
     }
 }

@@ -61,11 +61,11 @@ namespace Aula6.Services
         public User UpdateUser(User user)
         {
             var userModel = _dbContext.Users.Find(user.Id);
+
             //var addressModel = _dbContext.Adresses.Find(user.Address.Id);
             user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
             //_dbContext.Users.Update(user);
             _dbContext.Entry(userModel).CurrentValues.SetValues(user);
-            //_dbContext.Users.Update(user);
             //_dbContext.Entry(addressModel).CurrentValues.SetValues(user.Address);
             _dbContext.SaveChanges();
             return user;

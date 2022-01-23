@@ -15,7 +15,6 @@ namespace Treinando.Models
         [Column(TypeName = "decimal(10, 2)")]
         public decimal Price { get; set; } = 0;
 
-        //Plus
         public int StockMinimum { get; set; } = 10;
     }
 }
