@@ -80,7 +80,33 @@ namespace Treinando
             services.AddControllers().AddNewtonsoftJson(o => {o.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;});     //Não Retorna os Nulos
 
 
-            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "Aula6", Version = "v1"}); });
+            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "Aula6", Version = "v1"}); //});
+
+            //Autenticação (JWT) e Autorização no Swagger
+            c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme() 
+                { 
+                    Name = "Authorization", 
+                    Type = SecuritySchemeType.ApiKey, 
+                    Scheme = "Bearer", 
+                    BearerFormat = "JWT", 
+                    In = ParameterLocation.Header, 
+                    Description = "JWT Authorization header using the Bearer scheme.\r\n\r\n Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer 12345abcdef\"", 
+                }); 
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement 
+                { 
+                    { 
+                          new OpenApiSecurityScheme 
+                          { 
+                              Reference = new OpenApiReference 
+                              { 
+                                  Type = ReferenceType.SecurityScheme, 
+                                  Id = "Bearer" 
+                              } 
+                          }, 
+                         new string[] {} 
+                    } 
+                }); 
+   });
 
             // Cilcos de Vida
             //services.AddScoped<>();    => Um objeto por Requisição (request / response)
