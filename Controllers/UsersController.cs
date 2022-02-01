@@ -18,7 +18,7 @@ namespace Treinando.Controllers
         private readonly IUserService _userServices;
         private readonly IAddressService _addressServices;
         private readonly DBContext _dbContext;
-        //Injeção de Dependências
+        
         public UsersController(DBContext dbContext, IUserService userServices, IAddressService addressServices)
         {
             _dbContext = dbContext;
@@ -27,7 +27,7 @@ namespace Treinando.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetUsers()        //Lista Todos os Usuários
+        public IActionResult GetUsers()        
         {
             if (_userServices.GetListUsers().Count == 0)
             {
@@ -37,7 +37,7 @@ namespace Treinando.Controllers
         }
         
         [HttpGet("id/{userId}")]  
-        public IActionResult GetById(int userId)    //Retorna Usuário pelo Id
+        public IActionResult GetById(int userId)   
         {
             if (_userServices.GetUserById(userId) is null)
             {
@@ -47,7 +47,7 @@ namespace Treinando.Controllers
         }
 
         [HttpGet("login/{login}")]
-        public IActionResult GetByLogin(string login)    //Retorna Usuário pelo Login
+        public IActionResult GetByLogin(string login)    
         {
             if (_userServices.GetUserByLogin(login) is null)
             {
@@ -59,7 +59,7 @@ namespace Treinando.Controllers
         //PLUS
 
         [HttpGet("{userId}/orders")]
-        public IActionResult GetUserOrders(int userId)    //Retorna Usuário e Todos seus Pedidos pelo seu Id
+        public IActionResult GetUserOrders(int userId)    
         {
             if (_userServices.GetUserById(userId) is null)
             {
@@ -73,7 +73,7 @@ namespace Treinando.Controllers
             return Ok(_userServices.GetUserWithOrders(userId));
         }
         
-        [HttpPost]                                              //Cria/Cadastra um Usuário
+        [HttpPost]                                              
         public IActionResult Create([FromBody] User user)    
         {
             if (_userServices.CreateUser(user))
@@ -83,7 +83,7 @@ namespace Treinando.Controllers
             return Ok("Usuário JÁ Cadastrado");
         }
 
-        [HttpPut]                                           //Edita Usuário
+        [HttpPut]                                           
         public IActionResult Update([FromBody] User user)
         {
             if (_userServices.GetUserById(user.Id) is null)
@@ -94,7 +94,7 @@ namespace Treinando.Controllers
         }
 
         
-        [HttpPut("user/{userId}/address/{addressId}")]              //Liga um endereço a um usuário
+        [HttpPut("user/{userId}/address/{addressId}")]              
         public IActionResult UpdateUserAddress(int userId, int addressId)
         {
             if (_userServices.UpdateUserAddress(userId, addressId))
@@ -105,7 +105,7 @@ namespace Treinando.Controllers
         }
         
 
-        [HttpDelete("{userId}")]                        //Deleta Usuário
+        [HttpDelete("{userId}")]                        
         public IActionResult Delete(int userId)        
         {
             if (_userServices.DeleteUser(userId))
@@ -130,7 +130,7 @@ namespace Treinando.Controllers
         }
 
         [HttpGet("cpf/{cpf}")]
-        public IActionResult GetByCPF(string cpf)    //Retorna Usuário pelo CPF
+        public IActionResult GetByCPF(string cpf)    
         {
             if (_userServices.GetUserByCPF(cpf) is null)
             {
@@ -140,7 +140,7 @@ namespace Treinando.Controllers
         }
 
         [HttpGet("email/{email}")]
-        public IActionResult GetByEmail(string email)    //Retorna Usuário pelo E-Mail
+        public IActionResult GetByEmail(string email)    
         {
             if (_userServices.GetUserByEmail(email) is null)
             {
@@ -150,7 +150,7 @@ namespace Treinando.Controllers
         }
 
         [HttpGet("birthday/{birthday}")]
-        public IActionResult GetByBirthday(string birthday)    //Retorna Usuário pela Data de Nascimento
+        public IActionResult GetByBirthday(string birthday)    
         {
             if (_userServices.GetUsersByBirthday(birthday).Count == 0)
             {

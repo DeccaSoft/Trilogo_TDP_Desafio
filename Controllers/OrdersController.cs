@@ -21,7 +21,7 @@ namespace Treinando.Controllers
         private readonly IUserService _userServices;
         private readonly IProductService _productServices;
         private readonly DBContext _dbContext;
-        //Injeção de Dependências
+        
         public OrdersController(DBContext dbContext, IOrderService orderServices, IUserService userServices, IProductService productServices)
         {
             _dbContext = dbContext;
@@ -31,7 +31,7 @@ namespace Treinando.Controllers
         }
 
         [HttpGet("userId/{userId}")]
-        public IActionResult ListOrdersByUserId(int userId)             //Lista Pedidos do Usuário (Pega pelo Id do usuário)
+        public IActionResult ListOrdersByUserId(int userId)             
         {
             var userModel = _userServices.GetUserById(userId);
             if(userModel is null)
@@ -46,7 +46,7 @@ namespace Treinando.Controllers
         }
 
         [HttpGet("login/{login}")]
-        public IActionResult ListOrdersByUserLogin(string login)        //Lista Pedidos do Usuário (Pega pelo login do usuário)
+        public IActionResult ListOrdersByUserLogin(string login)        
         {
             var userModel = _userServices.GetUserByLogin(login);
             if (userModel is null)
@@ -60,7 +60,7 @@ namespace Treinando.Controllers
             return Ok(_orderServices.getOrders(userModel));
         }
 
-        //Se não houver pedido aberto -> Cria pedido em branco
+        
         [HttpPost("{login}")]
         public IActionResult CreateOrderForUser(string login)
         {
@@ -81,9 +81,9 @@ namespace Treinando.Controllers
             
         }
 
-        //Se já Existir pedido -> Edita o pedido
+        
         [HttpPut("{login}")]
-        public IActionResult updateItem(string login, int prodId, int qtd)     //Inclui um Item
+        public IActionResult updateItem(string login, int prodId, int qtd)     
         {
             User user = _userServices.GetUserByLogin(login);
             if(user is null) { return BadRequest("Usuário NÃO Cadastrado"); }
@@ -99,7 +99,7 @@ namespace Treinando.Controllers
         }
 
         [HttpPut("remove/{itemId}")]
-        public IActionResult downgradeItem(int userId, int itemId, int prodId)          //Remove um Item
+        public IActionResult downgradeItem(int userId, int itemId, int prodId)          
         {
             User user = _userServices.GetUserById(userId);
             if (user is null) { return BadRequest("Usuário NÃO Cadastrado"); }
@@ -117,7 +117,7 @@ namespace Treinando.Controllers
             }
         }
 
-        //Edita Quantidades dos Ítens (Para Mais) ou (Para Menos - bastando colocar sinal negativo)
+        
         [HttpPut("item/{qtd}")]
         public IActionResult changeItemQuantity(int userId, int itemId, int prodId, int qtd)
         {
@@ -137,7 +137,7 @@ namespace Treinando.Controllers
             }
         }
 
-        //Cancelar Pedido
+        
         [HttpDelete]
         [Route("cancel")]
         public IActionResult cancelOrder(int userId)
@@ -158,7 +158,7 @@ namespace Treinando.Controllers
             }
         }
 
-        //Finlaizar Pedido
+        
         [HttpPut]
         [Route("finish")]
         public IActionResult finishOrder(int userId)
@@ -179,7 +179,7 @@ namespace Treinando.Controllers
             }
         }
 
-        //Mudar Forma de Pagamento
+        
         [HttpPut]
         [Route("changePay/{userId}")]
         public IActionResult ChangePaymentOrder(int userId, Payment pay)
@@ -202,7 +202,7 @@ namespace Treinando.Controllers
 
         //RELATÓRIOS.........
 
-        // Listar pedidos por Status
+       
         [HttpGet("report/status/{status}")]
         public IActionResult ListOrdersByStatus(OrderStatus status)
         {
@@ -213,7 +213,7 @@ namespace Treinando.Controllers
             return Ok(_orderServices.getOrdersByStatus(status));
         }
 
-        // Listar pedidos por Forma de Pagamento
+        
         [HttpGet("report/payment/{payment}")]
         public IActionResult ListOrdersByPayment(Payment payment)
         {
@@ -224,9 +224,7 @@ namespace Treinando.Controllers
             return Ok(_orderServices.getOrdersByPayment(payment));
         }
 
-        // Listar Pedidos por Datas de...
-
-        //Lista pedidos por data de Criação
+        
         [HttpGet("report/criation/{criation}")]
         public IActionResult ListOrdersByCriation(string criation)
         {
@@ -237,7 +235,7 @@ namespace Treinando.Controllers
             return Ok(_orderServices.getOrdersByCriation(criation));
         }
 
-        //Lista pedidos por data de Cancelamento
+        
         [HttpGet("report/cancellation/{cancellation}")]
         public IActionResult ListOrdersByCancellation(string cancellation)
         {
@@ -248,7 +246,7 @@ namespace Treinando.Controllers
             return Ok(_orderServices.getOrdersByCancellation(cancellation));
         }
 
-        //Lista pedidos por data de Finalização
+        
         [HttpGet("report/finalization/{finalization}")]
         public IActionResult ListOrdersByFinalization(string finalization)
         {

@@ -15,7 +15,7 @@ namespace Aula6.Requests
         public List<OrderStatus> Statuses { get; set; }
         public List<int> UsersId { get; set; }
 
-        //public List<Order> Orders { get; set; }
+        
 
     }
 }

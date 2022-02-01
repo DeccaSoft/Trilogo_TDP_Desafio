@@ -14,24 +14,24 @@ namespace Aula6.Services
         public ProductServices(DBContext dbContext)
         {
             _dbContext = dbContext;
-            //_dbContext.Database.EnsureCreated();
+           
         }
-        public List<Product> ListProducts()        //Lista Todos os Produtos
+        public List<Product> ListProducts()        
         {
             return _dbContext.Products.ToList();
         }
 
-        public Product GetProductById(int id)    //Retorna Produto pelo Id
+        public Product GetProductById(int id)    
         {
             return _dbContext.Products.Find(id);
         }
 
-        public List<Product> GetProductByName(string name)    //Retorna Produto pelo Nome
+        public List<Product> GetProductByName(string name)   
         {
             return _dbContext.Products.Where(n => n.Name.Equals(name)).ToList();
         }
 
-        public bool CreateProduct(Product product)          //Cadastra um Produto
+        public bool CreateProduct(Product product)          
         {
             if (_dbContext.Products.FirstOrDefault(p => p.Id.Equals(product.Id)) != null
                 || _dbContext.Products.FirstOrDefault(p => p.Name.Equals(product.Name) && p.Description.Equals(product.Description)
@@ -44,16 +44,16 @@ namespace Aula6.Services
             return true;
         }
 
-        public Product UpdateProduct(Product product)       //Edita um Produto
+        public Product UpdateProduct(Product product)       
         {
             var productModel = _dbContext.Products.Find(product.Id);
-            //_dbContext.Products.Update(product);
+            
             _dbContext.Entry(productModel).CurrentValues.SetValues(product);
             _dbContext.SaveChanges();
             return product;
         }
 
-        public bool DeleteProduct(int id)       //Apaga um Produto
+        public bool DeleteProduct(int id)       
         {
             var product = _dbContext.Products.Find(id);
             if (product != null)
@@ -78,20 +78,20 @@ namespace Aula6.Services
 
         //PLUS
 
-        //Lista Quantidade de um produto em estoque
-        public int GetProductInventory(int id)    //Retorna Estoque do Produto pelo Id
+        
+        public int GetProductInventory(int id)   
         {
             return _dbContext.Products.Find(id).Quantity;
         }
 
-        //Listar Produtos com estoque abaixo do Mínimo
-        public List<Product> ListProductsWithStockBelowTheMinimum()        //Lista Todos os Produtos com estoque abaixo do Mínimo
+       
+        public List<Product> ListProductsWithStockBelowTheMinimum()        
         {
             return _dbContext.Products.Where(p => p.Quantity <= p.StockMinimum).ToList();
         }
 
-        //Listar produto por faixa de preço
-        public List<Product> ListProductsPricedUpToPrice(decimal price)        //Lista Todos os Produtos com preço menor ou igual a 'price'
+       
+        public List<Product> ListProductsPricedUpToPrice(decimal price)        
         {
             return _dbContext.Products.Where(p => p.Price <= price).ToList();
         }

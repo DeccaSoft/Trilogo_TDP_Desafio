@@ -14,29 +14,29 @@ namespace Aula6.Services
         public AddressServices(DBContext dbContext)
         {
             _dbContext = dbContext;
-            //_dbContext.Database.EnsureCreated();
+            
         }
-        public List<Address> ListAddress()        //Lista Todos os Endereços
+        public List<Address> ListAddress()        
         {
             return _dbContext.Adresses.ToList();
         }
 
-        public Address GetAddressById(int id)    //Retorna Endereço pelo Id
+        public Address GetAddressById(int id)    
         {
             return _dbContext.Adresses.Find(id);
         }
 
-        public List<Address> GetAddressByStreet(string street)    //Retorna Endereços pelo Nome da Rua
+        public List<Address> GetAddressByStreet(string street)    
         {
             return _dbContext.Adresses.Where(a => a.Street.Contains(street)).ToList();
         }
 
-        public List<Address> GetAddressByNeighborhood(string neighborhood)    //Retorna Endereços pelo Bairro
+        public List<Address> GetAddressByNeighborhood(string neighborhood)   
         {
             return _dbContext.Adresses.Where(n => n.Neighborhood.Contains(neighborhood)).ToList();
         }
 
-        public bool CreateAddress(Address address)      //Cadastra um Endereço
+        public bool CreateAddress(Address address)      
         {
             if (_dbContext.Adresses.FirstOrDefault(a => a.Id.Equals(address.Id)) != null
                 || _dbContext.Adresses.FirstOrDefault(a => a.Street.Equals(address.Street) && a.Neighborhood.Equals(address.Neighborhood) 
@@ -50,16 +50,16 @@ namespace Aula6.Services
         }
 
         
-        public Address UpdateAddress(Address address)  //Edita um Endereço
+        public Address UpdateAddress(Address address)  
         {
             var addressModel = _dbContext.Adresses.Find(address.Id);
-            //_dbContext.Products.Update(product);
+            
             _dbContext.Entry(addressModel).CurrentValues.SetValues(address);
             _dbContext.SaveChanges();
             return address;
         }
         
-        public bool DeleteAddress(int id)       //Remove um Endereço
+        public bool DeleteAddress(int id)      
         {
             var address = _dbContext.Adresses.Find(id);
             if (address != null)

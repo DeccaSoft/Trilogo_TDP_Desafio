@@ -19,7 +19,7 @@ namespace Aula6.Controllers
     {
         private readonly IProductService _productServices;
         private readonly DBContext _dbContext;
-        //Injeção de Dependências
+        
         public ProductsController(DBContext dbContext, IProductService productServices)
         {
             _dbContext = dbContext;
@@ -27,7 +27,7 @@ namespace Aula6.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetProducts()        //Lista Todos os Produtos
+        public IActionResult GetProducts()        
         {
             if(_productServices.ListProducts().Count == 0)
             {
@@ -37,7 +37,7 @@ namespace Aula6.Controllers
         }
 
         [HttpGet("id/{prodId}")]
-        public IActionResult GetById(int prodId)    //Retorna Produto pelo Id
+        public IActionResult GetById(int prodId)    
         {
             if (_productServices.GetProductById(prodId) is null)
             {
@@ -47,7 +47,7 @@ namespace Aula6.Controllers
         }
 
         [HttpGet("name/{prodName}")]
-        public IActionResult GetByName(string prodName)    //Retorna Produto pelo Nome
+        public IActionResult GetByName(string prodName)    
         {
             if (_productServices.GetProductByName(prodName).Count == 0)
             {
@@ -56,7 +56,7 @@ namespace Aula6.Controllers
             return Ok(_productServices.GetProductByName(prodName));
         }
 
-        [HttpPost]                                          //Cria/Cadastra um Produto
+        [HttpPost]                                          
         public IActionResult Create([FromBody] Product product)   
         {
             if (_productServices.CreateProduct(product))
@@ -66,7 +66,7 @@ namespace Aula6.Controllers
             return Ok("Produto JÁ Cadastrado !");
         }
 
-        [HttpPut]                                       //Edita um Produto
+        [HttpPut]                                       
         public IActionResult Update([FromBody] Product product)   
         {
             if(_productServices.GetProductById(product.Id) is null)
@@ -76,7 +76,7 @@ namespace Aula6.Controllers
             return Ok(_productServices.UpdateProduct(product));
         }
 
-        [HttpDelete("{prodId}")]                            //Deleta um Produto
+        [HttpDelete("{prodId}")]                            
         public IActionResult Delete(int prodId)        
         {
             if (_productServices.DeleteProduct(prodId))
@@ -103,9 +103,9 @@ namespace Aula6.Controllers
 
         //PLUS
 
-        //Lista Quantidade de um produto em estoque
+       
         [HttpGet("inventory/{prodId}")]
-        public IActionResult GetInventory(int prodId)    //Retorna Estoque do Produto pelo Id
+        public IActionResult GetInventory(int prodId)    
         {
             if(_productServices.GetProductById(prodId) is null)
             {
@@ -114,9 +114,9 @@ namespace Aula6.Controllers
             return Ok("Total em Estoque: " + _productServices.GetProductInventory(prodId));
         }
 
-        //Listar Produtos com estoque abaixo do Mínimo
+        
         [HttpGet("stockBelowMin")]
-        public IActionResult ListStocksBelowTheMinimum()        //Lista Todos os Produtos com estoque abaixo do Mínimo
+        public IActionResult ListStocksBelowTheMinimum()        
         {
             if(_productServices.ListProductsWithStockBelowTheMinimum().Count == 0)
             {
@@ -125,9 +125,9 @@ namespace Aula6.Controllers
             return Ok(_productServices.ListProductsWithStockBelowTheMinimum());
         }
 
-        //Listar produto por faixa de preço (R$ 0.00 até 'price')
-        [HttpGet("price/{price}")] // /products/price/100
-        public IActionResult ListProductsPricedUpToXValue(decimal price)        //Lista Todos os Produtos com preço até o valor x 'price' predeterminado
+        
+        [HttpGet("price/{price}")] 
+        public IActionResult ListProductsPricedUpToXValue(decimal price)        
         {
             if (_productServices.ListProductsPricedUpToPrice(price).Count == 0)
             {

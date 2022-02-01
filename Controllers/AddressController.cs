@@ -18,7 +18,7 @@ namespace Aula6.Controllers
     {
         private readonly IAddressService _addressServices;
         private readonly DBContext _dbContext;
-        //Injeção de Dependências
+       
         public AddressController(DBContext dbContext, IAddressService addressServices)
         {
             _dbContext = dbContext;
@@ -26,7 +26,7 @@ namespace Aula6.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAddresses()        //Lista Todos os Endereços
+        public IActionResult GetAddresses()        
         {
             if(_addressServices.ListAddress().Count == 0)
             {
@@ -36,7 +36,7 @@ namespace Aula6.Controllers
         }
 
         [HttpGet("{idAddress}")]
-        public IActionResult GetById(int idAddress)    //Retorna Endereço pelo Id
+        public IActionResult GetById(int idAddress)    
         {
             if (_addressServices.GetAddressById(idAddress) is null)
             {
@@ -46,7 +46,7 @@ namespace Aula6.Controllers
         }
 
         [HttpGet("street/{street}")]
-        public IActionResult GetByStreet(string street)    //Retorna Endereços pelo Nome da Rua
+        public IActionResult GetByStreet(string street)   
         {
             if(_addressServices.GetAddressByStreet(street).Count == 0)
             {
@@ -56,7 +56,7 @@ namespace Aula6.Controllers
         }
 
         [HttpGet("neighborhood/{neighborhood}")]
-        public IActionResult GetByNeighborhood(string neighborhood)    //Retorna Endereços pelo Bairro
+        public IActionResult GetByNeighborhood(string neighborhood)    
         {
             if (_addressServices.GetAddressByNeighborhood(neighborhood).Count == 0)
             {
@@ -66,7 +66,7 @@ namespace Aula6.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Address address) //Cria/Cadastra um Endereço
+        public IActionResult Create([FromBody] Address address) 
         {
             if (_addressServices.CreateAddress(address))
             {
@@ -77,7 +77,7 @@ namespace Aula6.Controllers
         }
                 
         [HttpPut]
-        public IActionResult Update([FromBody] Address address)     //Altera um Endereço
+        public IActionResult Update([FromBody] Address address)     
         {
             if (_addressServices.GetAddressById(address.Id) is null)
             {
@@ -87,7 +87,7 @@ namespace Aula6.Controllers
             
         }
         
-        [HttpDelete("{idAddress}")]                                 //Deleta um Endereço
+        [HttpDelete("{idAddress}")]                                 
         public IActionResult Delete(int idAddress)
         {
             if (_addressServices.DeleteAddress(idAddress))

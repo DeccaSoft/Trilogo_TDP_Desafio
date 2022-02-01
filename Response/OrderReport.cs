@@ -18,6 +18,6 @@ namespace Treinando.Models
         [Required]
         public List<Order> Orders { get; set; }
 
-        //public List<int> UsersId { get; set; }
+       
     }
 }

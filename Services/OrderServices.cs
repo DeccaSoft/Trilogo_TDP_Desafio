@@ -17,12 +17,12 @@ namespace Aula6.Services
         {
             _dbContext = dbContext;
         }
-        public List<Order> getOrders(User user)     //Retorna todos os pedidos do usuário
+        public List<Order> getOrders(User user)    
         {
             return _dbContext.Orders.Include(o => o.Items).Where(o => o.UserId == user.Id).ToList();
         }
 
-        public Order getOrder(int orderId)           //Retorna todos os ítens de um pedido
+        public Order getOrder(int orderId)          
         {
             var order = _dbContext.Orders.Find(orderId);
             return order;

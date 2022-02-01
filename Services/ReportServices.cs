@@ -36,39 +36,7 @@ namespace Aula6.Services
                 Orders = orders
             };
 
-            //Solução Antiga... Deixei aqui para estudo posterior. (Aprendendo com meus erros)
-
-            /*
-            if (DateTime.Compare(startDate, endDate) < 0)
-            {
-                return null;
-            }
-            for (int i=0; i < statuses.Count; i++)
-            {
-                for (int j=0; j < usersId.Count; j++)
-                {
-                    orders.RemoveAll(o => o.Status != statuses[i] || o.UserId != usersId[j]);
-                }
-            }
-            
-            int totalCompleted = 0;
-            int totalCanceled = 0;
-            decimal ordersTotalValue = 0;
-            for (int i=0; i < orders.Count; i++)
-            {
-                if(orders[i].Status == OrderStatus.Completed) { totalCompleted++; }
-                if(orders[i].Status == OrderStatus.Canceled) { totalCanceled++; }
-                ordersTotalValue += orders[i].TotalValue;
-            }
-
-            return new OrderReport
-            {
-                FinishedOrdersAmount = totalCompleted,
-                CancelledOrdersAmount = totalCanceled,
-                OrdersTotalValue = ordersTotalValue,
-                Orders = orders
-            };
-            */
+           
         }
     }
 }

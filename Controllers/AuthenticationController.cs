@@ -27,41 +27,40 @@ namespace Aula6.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(LoginRequest loginRequest)   //Recebe E-mail e Senha
+        public IActionResult Login(LoginRequest loginRequest)   
         {
-            //var user = new User{Email = loginRequest.Email, Password = loginRequest.Password};
-            var user = _DBContext.Users.FirstOrDefault(u => u.Email == loginRequest.Email); //Checa E-Mail e Senha e Retorna o Usuário
+           
+            var user = _DBContext.Users.FirstOrDefault(u => u.Email == loginRequest.Email); 
 
             if (user is null || !BCrypt.Net.BCrypt.Verify(loginRequest.Password, user.Password))
             {
                 return BadRequest("Usuário ou senha inválido(s)");
             }
             
-            var token = GenerateToken(user);    //Caso usuário exista, Gera o Token
+            var token = GenerateToken(user);    
 
-            return Ok(token);                   //Retorna o Token ao usuário
+            return Ok(token);                   
         }
 
         public static string GenerateToken(User user)
         {
-            var tokenHandler = new JwtSecurityTokenHandler();               //Objeto JWT para o acesso ao Token
-            var key = Encoding.ASCII.GetBytes("chave-autenticacao-tdp");    //Transformaa Chave de String para Bytes (Array)
+            var tokenHandler = new JwtSecurityTokenHandler();               
+            var key = Encoding.ASCII.GetBytes("chave-autenticacao-tdp");    
             var tokenDescriptor = new SecurityTokenDescriptor
-            {                                                               //Informações do Token
+            {                                                               
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim(ClaimTypes.Name, user.Name),
                     new Claim(ClaimTypes.Email, user.Email),
                     new Claim(ClaimTypes.Role, user.Role)
-                    //new Claim("orders", "c-r-u-d")
-
+                    
 
                 }),
-                Expires = DateTime.UtcNow.AddHours(1),                      //Tempo de Validade do Token (1Hora)
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature) //Tipo de Algorítimo da Assinatura - Sha256
+                Expires = DateTime.UtcNow.AddHours(1),                     
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature) 
             };
-            var token = tokenHandler.CreateToken(tokenDescriptor);          //Cria o Token
-            return tokenHandler.WriteToken(token);                          //Transforma o Token em String para ser Retornado
+            var token = tokenHandler.CreateToken(tokenDescriptor);          
+            return tokenHandler.WriteToken(token);                          
         }
     }
 }

@@ -38,22 +38,22 @@ namespace Treinando
 
         // This method gets called by the runtime. Use this method to add services to the container.
         
-        public void ConfigureServices(IServiceCollection services)  //Método utilizado para se adicionar Serviços de Terceiros e Injeção de Dependências
+        public void ConfigureServices(IServiceCollection services)  
         {
             services.Configure<ApiBehaviorOptions>(options => 
             {
                 options.SuppressModelStateInvalidFilter = true;
             });
 
-            //Autenticação pro JWT
-            var key = Encoding.ASCII.GetBytes(Configuration.GetSection("Jwt:Secret").Value);    //Chave
+            
+            var key = Encoding.ASCII.GetBytes(Configuration.GetSection("Jwt:Secret").Value);    
 
-            //Configuração das Validações (Autenticação tipo JWT)
+            
             services.AddAuthentication(o =>
                 {                                           
                     o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                     o.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                }).AddJwtBearer(o =>                                                            //Como será a Validação
+                }).AddJwtBearer(o =>                                                            
                 {
                     o.TokenValidationParameters = new TokenValidationParameters
                     {
@@ -65,7 +65,7 @@ namespace Treinando
                 });
 
 
-            //Container de Injeção de Dependências (Service Provider)
+            
             services.AddScoped(provider => 
             {
                 var optionsBuilder = new DbContextOptionsBuilder<DBContext>()
@@ -76,14 +76,13 @@ namespace Treinando
             });
 
             services.AddControllers();
-            //.AddNewtonsoftJson(o => {o.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;});    //Utilizado até a verão 3.1
+            
             services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
-            services.AddControllers().AddNewtonsoftJson(o => {o.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;});     //Não Retorna os Nulos
+            services.AddControllers().AddNewtonsoftJson(o => {o.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;});     
 
+            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "Aula6", Version = "v1"}); 
 
-            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "Aula6", Version = "v1"}); //});
-
-            //Autenticação (JWT) e Autorização no Swagger
+           
             c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme() 
                 { 
                     Name = "Authorization", 
@@ -109,12 +108,7 @@ namespace Treinando
                 }); 
    });
 
-            // Cilcos de Vida
-            //services.AddScoped<>();    => Um objeto por Requisição (request / response)
-            //services.AddSingleton<>(); => Um único objeto por aplicação
-            //services.AddTransient<>(); => Novo objeto criado toda vez
-
-            //services.AddScoped<DBContext>();
+            
             services.AddScoped<AuthenticationServices>();
             services.AddScoped<IAddressService, AddressServices>();
             services.AddScoped<IUserService, UserServices>();
@@ -125,7 +119,7 @@ namespace Treinando
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env) //Método que define COMO eu quero que a aplicação de comporte
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env) 
         {
             if (env.IsDevelopment())
             {

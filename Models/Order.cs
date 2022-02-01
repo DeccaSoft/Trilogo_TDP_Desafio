@@ -25,7 +25,7 @@ namespace Treinando.Models
         public List<Item>? Items { get; set; }
 
         [Required]
-        public DateTime CreationDate { get; set; } = DateTime.Now;  //Padrão: Data da Criação do Pedido
+        public DateTime CreationDate { get; set; } = DateTime.Now;  
         public DateTime? CancelDate { get; set; } = null;
 
         [Required]
