@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Aula6.Interfaces;
 using Aula6.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -15,10 +16,10 @@ namespace Aula6.Controllers
     [Authorize(Roles = "Funcionario, Gerente, Admin")]
     public class AddressController : ControllerBase
     {
-        private readonly AddressServices _addressServices;
+        private readonly IAddressService _addressServices;
         private readonly DBContext _dbContext;
         //Injeção de Dependências
-        public AddressController(DBContext dbContext, AddressServices addressServices)
+        public AddressController(DBContext dbContext, IAddressService addressServices)
         {
             _dbContext = dbContext;
             _addressServices = addressServices;

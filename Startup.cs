@@ -22,6 +22,7 @@ using Microsoft.OpenApi.Models;
 using Aula6.Services;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
+using Aula6.Interfaces;
 
 namespace Treinando
 {
@@ -114,12 +115,12 @@ namespace Treinando
             //services.AddTransient<>(); => Novo objeto criado toda vez
 
             //services.AddScoped<DBContext>();
-            services.AddScoped<UserServices>();
-            services.AddScoped<ProductServices>();
-            services.AddScoped<OrderServices>();
             services.AddScoped<AuthenticationServices>();
-            services.AddScoped<ReportServices>();
-            services.AddScoped<AddressServices>();
+            services.AddScoped<IAddressService, AddressServices>();
+            services.AddScoped<IUserService, UserServices>();
+            services.AddScoped<IProductService, ProductServices>();
+            services.AddScoped<IOrderService, OrderServices>();
+            services.AddScoped<IReportService, ReportServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

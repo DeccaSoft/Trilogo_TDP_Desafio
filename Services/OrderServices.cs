@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Aula6.Enums;
+using Aula6.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Treinando.Data;
 using Treinando.Models;
 
 namespace Aula6.Services
 {
-    public class OrderServices
+    public class OrderServices : IOrderService
     {
         private readonly DBContext _dbContext;
         public OrderServices(DBContext dbContext)

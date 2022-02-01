@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Aula6.Enums;
+using Aula6.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Treinando.Data;
 using Treinando.Models;
 
 namespace Aula6.Services
 {
-    public class ReportServices
+    public class ReportServices : IReportService
     {
         private readonly DBContext _dbContext;
         public ReportServices(DBContext dbContext)

@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Aula6.Interfaces;
 using Treinando.Data;
 using Treinando.Models;
 
 namespace Aula6.Services
 {
-    public class ProductServices
+    public class ProductServices : IProductService
     {
         private readonly DBContext _dbContext;
         public ProductServices(DBContext dbContext)

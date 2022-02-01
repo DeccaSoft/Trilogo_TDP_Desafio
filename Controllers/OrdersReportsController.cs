@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Aula6.Enums;
+using Aula6.Interfaces;
 using Aula6.Requests;
 using Aula6.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -17,9 +18,9 @@ namespace Aula6.Controllers
     [Authorize(Roles = "Admin, Gerente")]
     public class OrdersReportsController : ControllerBase
     {
-        private readonly ReportServices _reportServices;
+        private readonly IReportService _reportServices;
         private readonly DBContext _dbContext;
-        public OrdersReportsController(ReportServices reportServices, DBContext dBContext)
+        public OrdersReportsController(IReportService reportServices, DBContext dBContext)
         {
             _reportServices = reportServices;
             _dbContext = dBContext;

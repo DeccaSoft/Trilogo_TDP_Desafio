@@ -6,6 +6,7 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Aula6.Services;
 using Microsoft.AspNetCore.Authorization;
+using Aula6.Interfaces;
 
 namespace Treinando.Controllers
 {
@@ -14,11 +15,11 @@ namespace Treinando.Controllers
     [Authorize(Roles = "Gerente, Funcionario, Admin")]
     public class UsersController : ControllerBase
     {
-        private readonly UserServices _userServices;
-        private readonly AddressServices _addressServices;
+        private readonly IUserService _userServices;
+        private readonly IAddressService _addressServices;
         private readonly DBContext _dbContext;
         //Injeção de Dependências
-        public UsersController(DBContext dbContext, UserServices userServices, AddressServices addressServices)
+        public UsersController(DBContext dbContext, IUserService userServices, IAddressService addressServices)
         {
             _dbContext = dbContext;
             _userServices = userServices;

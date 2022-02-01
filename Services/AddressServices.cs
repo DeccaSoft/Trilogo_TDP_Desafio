@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Aula6.Interfaces;
 using Treinando.Data;
 using Treinando.Models;
 
 namespace Aula6.Services
 {
-    public class AddressServices
+    public class AddressServices : IAddressService
     {
         private readonly DBContext _dbContext;
         public AddressServices(DBContext dbContext)

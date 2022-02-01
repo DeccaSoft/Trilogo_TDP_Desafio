@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Aula6.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Treinando.Data;
@@ -9,7 +10,7 @@ using Treinando.Models;
 
 namespace Aula6.Services
 {
-    public class UserServices
+    public class UserServices : IUserService
     {
         private readonly DBContext _dbContext;
         public UserServices(DBContext dbContext)

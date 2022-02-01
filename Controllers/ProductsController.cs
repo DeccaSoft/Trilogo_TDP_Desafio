@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Aula6.Interfaces;
 using Aula6.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,10 +17,10 @@ namespace Aula6.Controllers
     [Authorize(Roles = "Gerente, Admin")]
     public class ProductsController : ControllerBase
     {
-        private readonly ProductServices _productServices;
+        private readonly IProductService _productServices;
         private readonly DBContext _dbContext;
         //Injeção de Dependências
-        public ProductsController(DBContext dbContext, ProductServices productServices)
+        public ProductsController(DBContext dbContext, IProductService productServices)
         {
             _dbContext = dbContext;
             _productServices = productServices;

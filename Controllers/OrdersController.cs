@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Aula6.Enums;
 using Aula6.Services;
 using System;
+using Aula6.Interfaces;
 
 namespace Treinando.Controllers
 {
@@ -16,12 +17,12 @@ namespace Treinando.Controllers
     [Authorize(Roles = "Funcionario, Gerente, Admin")]
     public class OrdersController : ControllerBase
     {
-        private readonly OrderServices _orderServices;
-        private readonly UserServices _userServices;
-        private readonly ProductServices _productServices;
+        private readonly IOrderService _orderServices;
+        private readonly IUserService _userServices;
+        private readonly IProductService _productServices;
         private readonly DBContext _dbContext;
         //Injeção de Dependências
-        public OrdersController(DBContext dbContext, OrderServices orderServices, UserServices userServices, ProductServices productServices)
+        public OrdersController(DBContext dbContext, IOrderService orderServices, IUserService userServices, IProductService productServices)
         {
             _dbContext = dbContext;
             _orderServices = orderServices;
