@@ -37,7 +37,6 @@ namespace Aula6.Services
         public List<Order> GetUserWithOrders(int userId)
         {
 
-            
             return _dbContext.Orders.Where(u => u.UserId == userId).ToList();
         }
 
